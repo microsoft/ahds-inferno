@@ -1,0 +1,6739 @@
+---
+:ig_version: v3.1.1
+:groups:
+- :name: us_core_allergyintolerance
+  :class_name: USCorev311AllergyintoleranceSequence
+  :version: v3.1.1
+  :reformatted_version: v311
+  :resource: AllergyIntolerance
+  :profile_url: http://hl7.org/fhir/us/core/StructureDefinition/us-core-allergyintolerance
+  :profile_name: US Core AllergyIntolerance Profile
+  :profile_version: 3.1.1
+  :title: AllergyIntolerance
+  :short_description: Verify support for the server capabilities required by the US
+    Core AllergyIntolerance Profile.
+  :interactions:
+  - :code: create
+    :expectation: MAY
+  - :code: search-type
+    :expectation: SHALL
+  - :code: read
+    :expectation: SHALL
+  - :code: vread
+    :expectation: SHOULD
+  - :code: update
+    :expectation: MAY
+  - :code: patch
+    :expectation: MAY
+  - :code: delete
+    :expectation: MAY
+  - :code: history-instance
+    :expectation: SHOULD
+  - :code: history-type
+    :expectation: MAY
+  :operations: []
+  :searches:
+  - :names:
+    - patient
+    :expectation: SHALL
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - clinical-status
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  :search_definitions:
+    :patient:
+      :paths:
+      - patient
+      :full_paths:
+      - AllergyIntolerance.patient
+      :comparators: {}
+      :values: []
+      :type: Reference
+      :contains_multiple: false
+      :multiple_or: MAY
+    :clinical-status:
+      :paths:
+      - clinicalStatus
+      :full_paths:
+      - AllergyIntolerance.clinicalStatus
+      :comparators: {}
+      :values:
+      - active
+      - inactive
+      - resolved
+      :type: CodeableConcept
+      :contains_multiple: false
+      :multiple_or: MAY
+  :include_params: []
+  :revincludes:
+  - Provenance:target
+  :required_concepts:
+  - clinicalStatus
+  - verificationStatus
+  :must_supports:
+    :extensions: []
+    :slices: []
+    :elements:
+    - :path: clinicalStatus
+    - :path: verificationStatus
+    - :path: code
+    - :path: patient
+      :types:
+      - Reference
+    - :path: reaction
+    - :path: reaction.manifestation
+  :mandatory_elements:
+  - AllergyIntolerance.code
+  - AllergyIntolerance.patient
+  - AllergyIntolerance.reaction.manifestation
+  :bindings:
+  - :type: CodeableConcept
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/allergyintolerance-clinical
+    :path: clinicalStatus
+  - :type: CodeableConcept
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/allergyintolerance-verification
+    :path: verificationStatus
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/allergy-intolerance-type
+    :path: type
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/allergy-intolerance-category
+    :path: category
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/allergy-intolerance-criticality
+    :path: criticality
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/reaction-event-severity
+    :path: reaction.severity
+  :references:
+  - :path: AllergyIntolerance.patient
+    :profiles:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
+  - :path: AllergyIntolerance.encounter
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Encounter
+  - :path: AllergyIntolerance.recorder
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Practitioner
+    - http://hl7.org/fhir/StructureDefinition/PractitionerRole
+    - http://hl7.org/fhir/StructureDefinition/Patient
+    - http://hl7.org/fhir/StructureDefinition/RelatedPerson
+  - :path: AllergyIntolerance.asserter
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Patient
+    - http://hl7.org/fhir/StructureDefinition/RelatedPerson
+    - http://hl7.org/fhir/StructureDefinition/Practitioner
+    - http://hl7.org/fhir/StructureDefinition/PractitionerRole
+  :delayed_references: []
+- :name: us_core_careplan
+  :class_name: USCorev311CareplanSequence
+  :version: v3.1.1
+  :reformatted_version: v311
+  :resource: CarePlan
+  :profile_url: http://hl7.org/fhir/us/core/StructureDefinition/us-core-careplan
+  :profile_name: US Core CarePlan Profile
+  :profile_version: 3.1.1
+  :title: CarePlan
+  :short_description: Verify support for the server capabilities required by the US
+    Core CarePlan Profile.
+  :interactions:
+  - :code: create
+    :expectation: MAY
+  - :code: search-type
+    :expectation: SHALL
+  - :code: read
+    :expectation: SHALL
+  - :code: vread
+    :expectation: SHOULD
+  - :code: update
+    :expectation: MAY
+  - :code: patch
+    :expectation: MAY
+  - :code: delete
+    :expectation: MAY
+  - :code: history-instance
+    :expectation: SHOULD
+  - :code: history-type
+    :expectation: MAY
+  :operations: []
+  :searches:
+  - :expectation: SHALL
+    :names:
+    - patient
+    - category
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - category
+    - status
+    - date
+    :names_not_must_support_or_mandatory:
+    - date
+    :must_support_or_mandatory: false
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - category
+    - status
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - category
+    - date
+    :names_not_must_support_or_mandatory:
+    - date
+    :must_support_or_mandatory: false
+  :search_definitions:
+    :patient:
+      :paths:
+      - subject
+      :full_paths:
+      - CarePlan.subject
+      :comparators: {}
+      :values: []
+      :type: Reference
+      :contains_multiple: false
+      :multiple_or: MAY
+    :category:
+      :paths:
+      - category
+      :full_paths:
+      - CarePlan.category
+      :comparators: {}
+      :values:
+      - assess-plan
+      :type: CodeableConcept
+      :contains_multiple: true
+      :multiple_or: MAY
+    :status:
+      :paths:
+      - status
+      :full_paths:
+      - CarePlan.status
+      :comparators: {}
+      :values:
+      - draft
+      - active
+      - on-hold
+      - revoked
+      - completed
+      - entered-in-error
+      - unknown
+      :type: code
+      :contains_multiple: false
+      :multiple_or: SHALL
+    :date:
+      :paths:
+      - period
+      :full_paths:
+      - CarePlan.period
+      :comparators:
+        :eq: MAY
+        :ne: MAY
+        :gt: SHALL
+        :ge: SHALL
+        :lt: SHALL
+        :le: SHALL
+        :sa: MAY
+        :eb: MAY
+        :ap: MAY
+      :values: []
+      :type: Period
+      :contains_multiple: false
+      :multiple_or: MAY
+  :include_params: []
+  :revincludes:
+  - Provenance:target
+  :required_concepts: []
+  :must_supports:
+    :extensions: []
+    :slices:
+    - :name: CarePlan.category:AssessPlan
+      :path: category
+      :discriminator:
+        :type: patternCodeableConcept
+        :path: ''
+        :code: assess-plan
+        :system: http://hl7.org/fhir/us/core/CodeSystem/careplan-category
+    :elements:
+    - :path: text
+    - :path: text.status
+    - :path: status
+    - :path: intent
+    - :path: category
+    - :path: subject
+      :types:
+      - Reference
+  :mandatory_elements:
+  - CarePlan.text
+  - CarePlan.text.status
+  - CarePlan.text.div
+  - CarePlan.status
+  - CarePlan.intent
+  - CarePlan.category
+  - CarePlan.subject
+  - CarePlan.activity.detail.status
+  :bindings:
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/us/core/ValueSet/us-core-narrative-status
+    :path: text.status
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/request-status
+    :path: status
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/care-plan-intent
+    :path: intent
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/care-plan-activity-kind
+    :path: activity.detail.kind
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/care-plan-activity-status
+    :path: activity.detail.status
+  :references:
+  - :path: CarePlan.basedOn
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/CarePlan
+  - :path: CarePlan.replaces
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/CarePlan
+  - :path: CarePlan.partOf
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/CarePlan
+  - :path: CarePlan.subject
+    :profiles:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
+  - :path: CarePlan.encounter
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Encounter
+  - :path: CarePlan.author
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Patient
+    - http://hl7.org/fhir/StructureDefinition/Practitioner
+    - http://hl7.org/fhir/StructureDefinition/PractitionerRole
+    - http://hl7.org/fhir/StructureDefinition/Device
+    - http://hl7.org/fhir/StructureDefinition/RelatedPerson
+    - http://hl7.org/fhir/StructureDefinition/Organization
+    - http://hl7.org/fhir/StructureDefinition/CareTeam
+  - :path: CarePlan.contributor
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Patient
+    - http://hl7.org/fhir/StructureDefinition/Practitioner
+    - http://hl7.org/fhir/StructureDefinition/PractitionerRole
+    - http://hl7.org/fhir/StructureDefinition/Device
+    - http://hl7.org/fhir/StructureDefinition/RelatedPerson
+    - http://hl7.org/fhir/StructureDefinition/Organization
+    - http://hl7.org/fhir/StructureDefinition/CareTeam
+  - :path: CarePlan.careTeam
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/CareTeam
+  - :path: CarePlan.addresses
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Condition
+  - :path: CarePlan.supportingInfo
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Resource
+  - :path: CarePlan.goal
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Goal
+  - :path: CarePlan.activity.outcomeReference
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Resource
+  - :path: CarePlan.activity.reference
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Appointment
+    - http://hl7.org/fhir/StructureDefinition/CommunicationRequest
+    - http://hl7.org/fhir/StructureDefinition/DeviceRequest
+    - http://hl7.org/fhir/StructureDefinition/MedicationRequest
+    - http://hl7.org/fhir/StructureDefinition/NutritionOrder
+    - http://hl7.org/fhir/StructureDefinition/Task
+    - http://hl7.org/fhir/StructureDefinition/ServiceRequest
+    - http://hl7.org/fhir/StructureDefinition/VisionPrescription
+    - http://hl7.org/fhir/StructureDefinition/RequestGroup
+  - :path: CarePlan.activity.detail.reasonReference
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Condition
+    - http://hl7.org/fhir/StructureDefinition/Observation
+    - http://hl7.org/fhir/StructureDefinition/DiagnosticReport
+    - http://hl7.org/fhir/StructureDefinition/DocumentReference
+  - :path: CarePlan.activity.detail.goal
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Goal
+  - :path: CarePlan.activity.detail.location
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Location
+  - :path: CarePlan.activity.detail.performer
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Practitioner
+    - http://hl7.org/fhir/StructureDefinition/PractitionerRole
+    - http://hl7.org/fhir/StructureDefinition/Organization
+    - http://hl7.org/fhir/StructureDefinition/RelatedPerson
+    - http://hl7.org/fhir/StructureDefinition/Patient
+    - http://hl7.org/fhir/StructureDefinition/CareTeam
+    - http://hl7.org/fhir/StructureDefinition/HealthcareService
+    - http://hl7.org/fhir/StructureDefinition/Device
+  :delayed_references: []
+- :name: us_core_careteam
+  :class_name: USCorev311CareteamSequence
+  :version: v3.1.1
+  :reformatted_version: v311
+  :resource: CareTeam
+  :profile_url: http://hl7.org/fhir/us/core/StructureDefinition/us-core-careteam
+  :profile_name: US Core CareTeam Profile
+  :profile_version: 3.1.1
+  :title: CareTeam
+  :short_description: Verify support for the server capabilities required by the US
+    Core CareTeam Profile.
+  :interactions:
+  - :code: create
+    :expectation: MAY
+  - :code: search-type
+    :expectation: SHALL
+  - :code: read
+    :expectation: SHALL
+  - :code: vread
+    :expectation: SHOULD
+  - :code: update
+    :expectation: MAY
+  - :code: patch
+    :expectation: MAY
+  - :code: delete
+    :expectation: MAY
+  - :code: history-instance
+    :expectation: SHOULD
+  - :code: history-type
+    :expectation: MAY
+  :operations: []
+  :searches:
+  - :expectation: SHALL
+    :names:
+    - patient
+    - status
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  :search_definitions:
+    :patient:
+      :paths:
+      - subject
+      :full_paths:
+      - CareTeam.subject
+      :comparators: {}
+      :values: []
+      :type: Reference
+      :contains_multiple: false
+      :multiple_or: MAY
+    :status:
+      :paths:
+      - status
+      :full_paths:
+      - CareTeam.status
+      :comparators: {}
+      :values:
+      - proposed
+      - active
+      - suspended
+      - inactive
+      - entered-in-error
+      :type: code
+      :contains_multiple: false
+      :multiple_or: SHALL
+  :include_params: []
+  :revincludes:
+  - Provenance:target
+  :required_concepts: []
+  :must_supports:
+    :extensions: []
+    :slices: []
+    :elements:
+    - :path: status
+    - :path: subject
+      :types:
+      - Reference
+    - :path: participant
+    - :path: participant.role
+    - :path: participant.member
+      :types:
+      - Reference
+  :mandatory_elements:
+  - CareTeam.subject
+  - CareTeam.participant
+  - CareTeam.participant.role
+  - CareTeam.participant.member
+  :bindings:
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/care-team-status
+    :path: status
+  :references:
+  - :path: CareTeam.subject
+    :profiles:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
+  - :path: CareTeam.encounter
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Encounter
+  - :path: CareTeam.participant.member
+    :profiles:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-organization
+  - :path: CareTeam.participant.onBehalfOf
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Organization
+  - :path: CareTeam.reasonReference
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Condition
+  - :path: CareTeam.managingOrganization
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Organization
+  :delayed_references:
+  - :path: participant.member
+    :resources:
+    - Practitioner
+    - Organization
+- :name: us_core_condition
+  :class_name: USCorev311ConditionSequence
+  :version: v3.1.1
+  :reformatted_version: v311
+  :resource: Condition
+  :profile_url: http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition
+  :profile_name: US Core Condition Profile
+  :profile_version: 3.1.1
+  :title: Condition
+  :short_description: Verify support for the server capabilities required by the US
+    Core Condition Profile.
+  :interactions:
+  - :code: create
+    :expectation: MAY
+  - :code: search-type
+    :expectation: SHALL
+  - :code: read
+    :expectation: SHALL
+  - :code: vread
+    :expectation: SHOULD
+  - :code: update
+    :expectation: MAY
+  - :code: patch
+    :expectation: MAY
+  - :code: delete
+    :expectation: MAY
+  - :code: history-instance
+    :expectation: SHOULD
+  - :code: history-type
+    :expectation: MAY
+  :operations: []
+  :searches:
+  - :names:
+    - patient
+    :expectation: SHALL
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - onset-date
+    :names_not_must_support_or_mandatory:
+    - onset-date
+    :must_support_or_mandatory: false
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - category
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - clinical-status
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - code
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  :search_definitions:
+    :patient:
+      :paths:
+      - subject
+      :full_paths:
+      - Condition.subject
+      :comparators: {}
+      :values: []
+      :type: Reference
+      :contains_multiple: false
+      :multiple_or: MAY
+    :onset-date:
+      :paths:
+      - onsetDateTime
+      :full_paths:
+      - Condition.onsetDateTime
+      :comparators:
+        :eq: MAY
+        :ne: MAY
+        :gt: SHALL
+        :ge: SHALL
+        :lt: SHALL
+        :le: SHALL
+        :sa: MAY
+        :eb: MAY
+        :ap: MAY
+      :values: []
+      :type: date
+      :contains_multiple: false
+      :multiple_or: MAY
+    :category:
+      :paths:
+      - category
+      :full_paths:
+      - Condition.category
+      :comparators: {}
+      :values:
+      - health-concern
+      :type: CodeableConcept
+      :contains_multiple: true
+      :multiple_or: MAY
+    :clinical-status:
+      :paths:
+      - clinicalStatus
+      :full_paths:
+      - Condition.clinicalStatus
+      :comparators: {}
+      :values:
+      - active
+      - recurrence
+      - relapse
+      - inactive
+      - remission
+      - resolved
+      :type: CodeableConcept
+      :contains_multiple: false
+      :multiple_or: MAY
+    :code:
+      :paths:
+      - code
+      :full_paths:
+      - Condition.code
+      :comparators: {}
+      :values:
+      - '160245001'
+      :type: CodeableConcept
+      :contains_multiple: false
+      :multiple_or: MAY
+  :include_params: []
+  :revincludes:
+  - Provenance:target
+  :required_concepts:
+  - clinicalStatus
+  - verificationStatus
+  :must_supports:
+    :extensions: []
+    :slices: []
+    :elements:
+    - :path: clinicalStatus
+    - :path: verificationStatus
+    - :path: category
+    - :path: code
+    - :path: subject
+      :types:
+      - Reference
+  :mandatory_elements:
+  - Condition.category
+  - Condition.code
+  - Condition.subject
+  :bindings:
+  - :type: CodeableConcept
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/condition-clinical
+    :path: clinicalStatus
+  - :type: CodeableConcept
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/condition-ver-status
+    :path: verificationStatus
+  :references:
+  - :path: Condition.subject
+    :profiles:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
+  - :path: Condition.encounter
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Encounter
+  - :path: Condition.recorder
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Practitioner
+    - http://hl7.org/fhir/StructureDefinition/PractitionerRole
+    - http://hl7.org/fhir/StructureDefinition/Patient
+    - http://hl7.org/fhir/StructureDefinition/RelatedPerson
+  - :path: Condition.asserter
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Practitioner
+    - http://hl7.org/fhir/StructureDefinition/PractitionerRole
+    - http://hl7.org/fhir/StructureDefinition/Patient
+    - http://hl7.org/fhir/StructureDefinition/RelatedPerson
+  - :path: Condition.stage.assessment
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/ClinicalImpression
+    - http://hl7.org/fhir/StructureDefinition/DiagnosticReport
+    - http://hl7.org/fhir/StructureDefinition/Observation
+  - :path: Condition.evidence.detail
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Resource
+  :delayed_references: []
+- :name: us_core_implantable_device
+  :class_name: USCorev311ImplantableDeviceSequence
+  :version: v3.1.1
+  :reformatted_version: v311
+  :resource: Device
+  :profile_url: http://hl7.org/fhir/us/core/StructureDefinition/us-core-implantable-device
+  :profile_name: US Core Implantable Device Profile
+  :profile_version: 3.1.1
+  :title: Implantable Device
+  :short_description: Verify support for the server capabilities required by the US
+    Core Implantable Device Profile.
+  :interactions:
+  - :code: create
+    :expectation: MAY
+  - :code: search-type
+    :expectation: SHALL
+  - :code: read
+    :expectation: SHALL
+  - :code: vread
+    :expectation: SHOULD
+  - :code: update
+    :expectation: MAY
+  - :code: patch
+    :expectation: MAY
+  - :code: delete
+    :expectation: MAY
+  - :code: history-instance
+    :expectation: SHOULD
+  - :code: history-type
+    :expectation: MAY
+  :operations: []
+  :searches:
+  - :names:
+    - patient
+    :expectation: SHALL
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - type
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  :search_definitions:
+    :patient:
+      :paths:
+      - patient
+      :full_paths:
+      - Device.patient
+      :comparators: {}
+      :values: []
+      :type: Reference
+      :contains_multiple: false
+      :multiple_or: MAY
+    :type:
+      :paths:
+      - type
+      :full_paths:
+      - Device.type
+      :comparators: {}
+      :values: []
+      :type: CodeableConcept
+      :contains_multiple: false
+      :multiple_or: MAY
+  :include_params: []
+  :revincludes:
+  - Provenance:target
+  :required_concepts: []
+  :must_supports:
+    :extensions: []
+    :slices: []
+    :elements:
+    - :path: udiCarrier
+    - :path: udiCarrier.deviceIdentifier
+    - :path: udiCarrier.carrierAIDC
+    - :path: udiCarrier.carrierHRF
+    - :path: distinctIdentifier
+    - :path: manufactureDate
+    - :path: expirationDate
+    - :path: lotNumber
+    - :path: serialNumber
+    - :path: type
+    - :path: patient
+      :types:
+      - Reference
+    :choices:
+    - :paths:
+      - udiCarrier.carrierAIDC
+      - udiCarrier.carrierHRF
+  :mandatory_elements:
+  - Device.udiCarrier.deviceIdentifier
+  - Device.deviceName.name
+  - Device.deviceName.type
+  - Device.type
+  - Device.specialization.systemType
+  - Device.version.value
+  - Device.property.type
+  - Device.patient
+  :bindings:
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/udi-entry-type
+    :path: udiCarrier.entryType
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/device-status
+    :path: status
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/device-nametype
+    :path: deviceName.type
+  :references:
+  - :path: Device.definition
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/DeviceDefinition
+  - :path: Device.patient
+    :profiles:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
+  - :path: Device.owner
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Organization
+  - :path: Device.location
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Location
+  - :path: Device.parent
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Device
+  :delayed_references: []
+- :name: us_core_diagnosticreport_note
+  :class_name: USCorev311DiagnosticreportNoteSequence
+  :version: v3.1.1
+  :reformatted_version: v311
+  :resource: DiagnosticReport
+  :profile_url: http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-note
+  :profile_name: US Core DiagnosticReport Profile for Report and Note exchange
+  :profile_version: 3.1.1
+  :title: DiagnosticReport for Report and Note exchange
+  :short_description: Verify support for the server capabilities required by the US
+    Core DiagnosticReport Profile for Report and Note exchange.
+  :interactions:
+  - :code: create
+    :expectation: SHALL
+  - :code: search-type
+    :expectation: SHALL
+  - :code: read
+    :expectation: SHALL
+  - :code: vread
+    :expectation: SHOULD
+  - :code: update
+    :expectation: MAY
+  - :code: patch
+    :expectation: MAY
+  - :code: delete
+    :expectation: MAY
+  - :code: history-instance
+    :expectation: SHOULD
+  - :code: history-type
+    :expectation: MAY
+  :operations: []
+  :searches:
+  - :expectation: SHALL
+    :names:
+    - patient
+    - category
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :names:
+    - patient
+    :expectation: SHALL
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHALL
+    :names:
+    - patient
+    - category
+    - date
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - status
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - code
+    - date
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHALL
+    :names:
+    - patient
+    - code
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  :search_definitions:
+    :patient:
+      :paths:
+      - subject
+      :full_paths:
+      - DiagnosticReport.subject
+      :comparators: {}
+      :values: []
+      :type: Reference
+      :contains_multiple: false
+      :multiple_or: MAY
+    :category:
+      :paths:
+      - category
+      :full_paths:
+      - DiagnosticReport.category
+      :comparators: {}
+      :values:
+      - LP29684-5
+      - LP29708-2
+      - LP7839-6
+      :type: CodeableConcept
+      :contains_multiple: true
+      :multiple_or: MAY
+    :date:
+      :paths:
+      - effective
+      :full_paths:
+      - DiagnosticReport.effective
+      :comparators:
+        :eq: MAY
+        :ne: MAY
+        :gt: SHALL
+        :ge: SHALL
+        :lt: SHALL
+        :le: SHALL
+        :sa: MAY
+        :eb: MAY
+        :ap: MAY
+      :values: []
+      :type: date
+      :contains_multiple: false
+      :multiple_or: MAY
+    :status:
+      :paths:
+      - status
+      :full_paths:
+      - DiagnosticReport.status
+      :comparators: {}
+      :values:
+      - registered
+      - partial
+      - preliminary
+      - final
+      - amended
+      - corrected
+      - appended
+      - cancelled
+      - entered-in-error
+      - unknown
+      :type: code
+      :contains_multiple: false
+      :multiple_or: SHALL
+    :code:
+      :paths:
+      - code
+      :full_paths:
+      - DiagnosticReport.code
+      :comparators: {}
+      :values: []
+      :type: CodeableConcept
+      :contains_multiple: false
+      :multiple_or: SHOULD
+  :include_params: &1 []
+  :revincludes: &2
+  - Provenance:target
+  :required_concepts: []
+  :must_supports:
+    :extensions: []
+    :slices: []
+    :elements:
+    - :path: status
+    - :path: category
+    - :path: code
+    - :path: subject
+      :types:
+      - Reference
+    - :path: encounter
+      :types:
+      - Reference
+    - :path: effective[x]
+    - :path: issued
+    - :path: performer
+      :types:
+      - Reference
+    - :path: presentedForm
+  :mandatory_elements:
+  - DiagnosticReport.status
+  - DiagnosticReport.category
+  - DiagnosticReport.code
+  - DiagnosticReport.subject
+  - DiagnosticReport.effective[x]
+  - DiagnosticReport.media.link
+  :bindings:
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/diagnostic-report-status
+    :path: status
+  :references:
+  - :path: DiagnosticReport.basedOn
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/CarePlan
+    - http://hl7.org/fhir/StructureDefinition/ImmunizationRecommendation
+    - http://hl7.org/fhir/StructureDefinition/MedicationRequest
+    - http://hl7.org/fhir/StructureDefinition/NutritionOrder
+    - http://hl7.org/fhir/StructureDefinition/ServiceRequest
+  - :path: DiagnosticReport.subject
+    :profiles:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
+  - :path: DiagnosticReport.encounter
+    :profiles:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter
+  - :path: DiagnosticReport.performer
+    :profiles:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-organization
+  - :path: DiagnosticReport.resultsInterpreter
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Practitioner
+    - http://hl7.org/fhir/StructureDefinition/PractitionerRole
+    - http://hl7.org/fhir/StructureDefinition/Organization
+    - http://hl7.org/fhir/StructureDefinition/CareTeam
+  - :path: DiagnosticReport.specimen
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Specimen
+  - :path: DiagnosticReport.result
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Observation
+  - :path: DiagnosticReport.imagingStudy
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/ImagingStudy
+  - :path: DiagnosticReport.media.link
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Media
+  :delayed_references:
+  - :path: encounter
+    :resources:
+    - Encounter
+  - :path: performer
+    :resources:
+    - Practitioner
+    - Organization
+- :name: us_core_diagnosticreport_lab
+  :class_name: USCorev311DiagnosticreportLabSequence
+  :version: v3.1.1
+  :reformatted_version: v311
+  :resource: DiagnosticReport
+  :profile_url: http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-lab
+  :profile_name: US Core DiagnosticReport Profile for Laboratory Results Reporting
+  :profile_version: 3.1.1
+  :title: DiagnosticReport for Laboratory Results Reporting
+  :short_description: Verify support for the server capabilities required by the US
+    Core DiagnosticReport Profile for Laboratory Results Reporting.
+  :interactions:
+  - :code: create
+    :expectation: SHALL
+  - :code: search-type
+    :expectation: SHALL
+  - :code: read
+    :expectation: SHALL
+  - :code: vread
+    :expectation: SHOULD
+  - :code: update
+    :expectation: MAY
+  - :code: patch
+    :expectation: MAY
+  - :code: delete
+    :expectation: MAY
+  - :code: history-instance
+    :expectation: SHOULD
+  - :code: history-type
+    :expectation: MAY
+  :operations: []
+  :searches:
+  - :expectation: SHALL
+    :names:
+    - patient
+    - category
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :names:
+    - patient
+    :expectation: SHALL
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHALL
+    :names:
+    - patient
+    - category
+    - date
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - status
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - code
+    - date
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHALL
+    :names:
+    - patient
+    - code
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  :search_definitions:
+    :patient:
+      :paths:
+      - subject
+      :full_paths:
+      - DiagnosticReport.subject
+      :comparators: {}
+      :values: []
+      :type: Reference
+      :contains_multiple: false
+      :multiple_or: MAY
+    :category:
+      :paths:
+      - category
+      :full_paths:
+      - DiagnosticReport.category
+      :comparators: {}
+      :values:
+      - LAB
+      :type: CodeableConcept
+      :contains_multiple: true
+      :multiple_or: MAY
+    :date:
+      :paths:
+      - effective
+      :full_paths:
+      - DiagnosticReport.effective
+      :comparators:
+        :eq: MAY
+        :ne: MAY
+        :gt: SHALL
+        :ge: SHALL
+        :lt: SHALL
+        :le: SHALL
+        :sa: MAY
+        :eb: MAY
+        :ap: MAY
+      :values: []
+      :type: date
+      :contains_multiple: false
+      :multiple_or: MAY
+    :status:
+      :paths:
+      - status
+      :full_paths:
+      - DiagnosticReport.status
+      :comparators: {}
+      :values:
+      - registered
+      - partial
+      - preliminary
+      - final
+      - amended
+      - corrected
+      - appended
+      - cancelled
+      - entered-in-error
+      - unknown
+      :type: code
+      :contains_multiple: false
+      :multiple_or: SHALL
+    :code:
+      :paths:
+      - code
+      :full_paths:
+      - DiagnosticReport.code
+      :comparators: {}
+      :values: []
+      :type: CodeableConcept
+      :contains_multiple: false
+      :multiple_or: SHOULD
+  :include_params: *1
+  :revincludes: *2
+  :required_concepts: []
+  :must_supports:
+    :extensions: []
+    :slices:
+    - :name: DiagnosticReport.category:LaboratorySlice
+      :path: category
+      :discriminator:
+        :type: patternCodeableConcept
+        :path: ''
+        :code: LAB
+        :system: http://terminology.hl7.org/CodeSystem/v2-0074
+    :elements:
+    - :path: status
+    - :path: category
+    - :path: code
+    - :path: subject
+      :types:
+      - Reference
+    - :path: effective[x]
+    - :path: issued
+    - :path: performer
+      :types:
+      - Reference
+    - :path: result
+      :types:
+      - Reference
+  :mandatory_elements:
+  - DiagnosticReport.status
+  - DiagnosticReport.category
+  - DiagnosticReport.code
+  - DiagnosticReport.subject
+  - DiagnosticReport.effective[x]
+  - DiagnosticReport.issued
+  - DiagnosticReport.media.link
+  :bindings:
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/diagnostic-report-status
+    :path: status
+  :references:
+  - :path: DiagnosticReport.basedOn
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/CarePlan
+    - http://hl7.org/fhir/StructureDefinition/ImmunizationRecommendation
+    - http://hl7.org/fhir/StructureDefinition/MedicationRequest
+    - http://hl7.org/fhir/StructureDefinition/NutritionOrder
+    - http://hl7.org/fhir/StructureDefinition/ServiceRequest
+  - :path: DiagnosticReport.subject
+    :profiles:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
+  - :path: DiagnosticReport.encounter
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Encounter
+  - :path: DiagnosticReport.performer
+    :profiles:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-organization
+  - :path: DiagnosticReport.resultsInterpreter
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Practitioner
+    - http://hl7.org/fhir/StructureDefinition/PractitionerRole
+    - http://hl7.org/fhir/StructureDefinition/Organization
+    - http://hl7.org/fhir/StructureDefinition/CareTeam
+  - :path: DiagnosticReport.specimen
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Specimen
+  - :path: DiagnosticReport.result
+    :profiles:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab
+  - :path: DiagnosticReport.imagingStudy
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/ImagingStudy
+  - :path: DiagnosticReport.media.link
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Media
+  :delayed_references:
+  - :path: performer
+    :resources:
+    - Practitioner
+    - Organization
+- :name: us_core_documentreference
+  :class_name: USCorev311DocumentreferenceSequence
+  :version: v3.1.1
+  :reformatted_version: v311
+  :resource: DocumentReference
+  :profile_url: http://hl7.org/fhir/us/core/StructureDefinition/us-core-documentreference
+  :profile_name: US Core DocumentReference Profile
+  :profile_version: 3.1.1
+  :title: DocumentReference
+  :short_description: Verify support for the server capabilities required by the US
+    Core DocumentReference Profile.
+  :interactions:
+  - :code: create
+    :expectation: SHALL
+  - :code: search-type
+    :expectation: SHALL
+  - :code: read
+    :expectation: SHALL
+  - :code: vread
+    :expectation: SHOULD
+  - :code: update
+    :expectation: MAY
+  - :code: patch
+    :expectation: MAY
+  - :code: delete
+    :expectation: MAY
+  - :code: history-instance
+    :expectation: SHOULD
+  - :code: history-type
+    :expectation: MAY
+  :operations:
+  - :code: docref
+    :expectation: SHALL
+  :searches:
+  - :names:
+    - patient
+    :expectation: SHALL
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :names:
+    - _id
+    :expectation: SHALL
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - type
+    - period
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHALL
+    :names:
+    - patient
+    - type
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHALL
+    :names:
+    - patient
+    - category
+    - date
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - status
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHALL
+    :names:
+    - patient
+    - category
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  :search_definitions:
+    :_id:
+      :paths:
+      - id
+      :full_paths:
+      - DocumentReference.id
+      :comparators: {}
+      :values: []
+      :type: http://hl7.org/fhirpath/System.String
+      :contains_multiple: false
+      :multiple_or: MAY
+    :patient:
+      :paths:
+      - subject
+      :full_paths:
+      - DocumentReference.subject
+      :comparators: {}
+      :values: []
+      :type: Reference
+      :contains_multiple: false
+      :multiple_or: MAY
+    :type:
+      :paths:
+      - type
+      :full_paths:
+      - DocumentReference.type
+      :comparators: {}
+      :values:
+      - UNK
+      :type: CodeableConcept
+      :contains_multiple: false
+      :multiple_or: MAY
+    :period:
+      :paths:
+      - context.period
+      :full_paths:
+      - DocumentReference.context.period
+      :comparators:
+        :eq: MAY
+        :ne: MAY
+        :gt: SHALL
+        :ge: SHALL
+        :lt: SHALL
+        :le: SHALL
+        :sa: MAY
+        :eb: MAY
+        :ap: MAY
+      :values: []
+      :type: Period
+      :contains_multiple: false
+      :multiple_or: MAY
+    :category:
+      :paths:
+      - category
+      :full_paths:
+      - DocumentReference.category
+      :comparators: {}
+      :values: []
+      :type: CodeableConcept
+      :contains_multiple: true
+      :multiple_or: MAY
+    :date:
+      :paths:
+      - date
+      :full_paths:
+      - DocumentReference.date
+      :comparators:
+        :eq: MAY
+        :ne: MAY
+        :gt: SHALL
+        :ge: SHALL
+        :lt: SHALL
+        :le: SHALL
+        :sa: MAY
+        :eb: MAY
+        :ap: MAY
+      :values: []
+      :type: instant
+      :contains_multiple: false
+      :multiple_or: MAY
+    :status:
+      :paths:
+      - status
+      :full_paths:
+      - DocumentReference.status
+      :comparators: {}
+      :values:
+      - current
+      - superseded
+      - entered-in-error
+      :type: code
+      :contains_multiple: false
+      :multiple_or: SHALL
+  :include_params: []
+  :revincludes:
+  - Provenance:target
+  :required_concepts:
+  - type
+  :must_supports:
+    :extensions: []
+    :slices: []
+    :elements:
+    - :path: identifier
+    - :path: status
+    - :path: type
+    - :path: category
+    - :path: subject
+      :types:
+      - Reference
+    - :path: date
+    - :path: author
+      :types:
+      - Reference
+    - :path: content
+    - :path: content.attachment
+    - :path: content.attachment.contentType
+    - :path: content.attachment.data
+    - :path: content.attachment.url
+    - :path: content.format
+    - :path: context
+    - :path: context.encounter
+      :types:
+      - Reference
+    - :path: context.period
+    :choices:
+    - :paths:
+      - content.attachment.data
+      - content.attachment.url
+  :mandatory_elements:
+  - DocumentReference.status
+  - DocumentReference.type
+  - DocumentReference.category
+  - DocumentReference.subject
+  - DocumentReference.relatesTo.code
+  - DocumentReference.relatesTo.target
+  - DocumentReference.content
+  - DocumentReference.content.attachment
+  - DocumentReference.content.attachment.contentType
+  :bindings:
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/document-reference-status
+    :path: status
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/composition-status
+    :path: docStatus
+  - :type: CodeableConcept
+    :strength: required
+    :system: http://hl7.org/fhir/us/core/ValueSet/us-core-documentreference-type
+    :path: type
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/document-relationship-type
+    :path: relatesTo.code
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/mimetypes
+    :path: content.attachment.contentType
+  :references:
+  - :path: DocumentReference.subject
+    :profiles:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
+  - :path: DocumentReference.author
+    :profiles:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-organization
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
+  - :path: DocumentReference.authenticator
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Practitioner
+    - http://hl7.org/fhir/StructureDefinition/PractitionerRole
+    - http://hl7.org/fhir/StructureDefinition/Organization
+  - :path: DocumentReference.custodian
+    :profiles:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-organization
+  - :path: DocumentReference.relatesTo.target
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/DocumentReference
+  - :path: DocumentReference.context.encounter
+    :profiles:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter
+  - :path: DocumentReference.context.sourcePatientInfo
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Patient
+  - :path: DocumentReference.context.related
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Resource
+  :delayed_references:
+  - :path: author
+    :resources:
+    - Practitioner
+    - Organization
+  - :path: custodian
+    :resources:
+    - Organization
+  - :path: context.encounter
+    :resources:
+    - Encounter
+- :name: us_core_encounter
+  :class_name: USCorev311EncounterSequence
+  :version: v3.1.1
+  :reformatted_version: v311
+  :resource: Encounter
+  :profile_url: http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter
+  :profile_name: US Core Encounter Profile
+  :profile_version: 3.1.1
+  :title: Encounter
+  :short_description: Verify support for the server capabilities required by the US
+    Core Encounter Profile.
+  :interactions:
+  - :code: create
+    :expectation: MAY
+  - :code: search-type
+    :expectation: SHALL
+  - :code: read
+    :expectation: SHALL
+  - :code: vread
+    :expectation: SHOULD
+  - :code: update
+    :expectation: MAY
+  - :code: patch
+    :expectation: MAY
+  - :code: delete
+    :expectation: MAY
+  - :code: history-instance
+    :expectation: SHOULD
+  - :code: history-type
+    :expectation: MAY
+  :operations: []
+  :searches:
+  - :names:
+    - patient
+    :expectation: SHALL
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :names:
+    - _id
+    :expectation: SHALL
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :names:
+    - identifier
+    :expectation: SHOULD
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - class
+    - patient
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - status
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - type
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHALL
+    :names:
+    - date
+    - patient
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  :search_definitions:
+    :_id:
+      :paths:
+      - id
+      :full_paths:
+      - Encounter.id
+      :comparators: {}
+      :values: []
+      :type: http://hl7.org/fhirpath/System.String
+      :contains_multiple: false
+      :multiple_or: MAY
+    :identifier:
+      :paths:
+      - identifier
+      :full_paths:
+      - Encounter.identifier
+      :comparators: {}
+      :values: []
+      :type: Identifier
+      :contains_multiple: true
+      :multiple_or: MAY
+    :patient:
+      :paths:
+      - subject
+      :full_paths:
+      - Encounter.subject
+      :comparators: {}
+      :values: []
+      :type: Reference
+      :contains_multiple: false
+      :multiple_or: MAY
+    :class:
+      :paths:
+      - class
+      :full_paths:
+      - Encounter.class
+      :comparators: {}
+      :values: []
+      :type: Coding
+      :contains_multiple: false
+      :multiple_or: MAY
+    :status:
+      :paths:
+      - status
+      :full_paths:
+      - Encounter.status
+      :comparators: {}
+      :values:
+      - planned
+      - arrived
+      - triaged
+      - in-progress
+      - onleave
+      - finished
+      - cancelled
+      - entered-in-error
+      - unknown
+      :type: code
+      :contains_multiple: false
+      :multiple_or: MAY
+    :type:
+      :paths:
+      - type
+      :full_paths:
+      - Encounter.type
+      :comparators: {}
+      :values: []
+      :type: CodeableConcept
+      :contains_multiple: true
+      :multiple_or: MAY
+    :date:
+      :paths:
+      - period
+      :full_paths:
+      - Encounter.period
+      :comparators:
+        :eq: MAY
+        :ne: MAY
+        :gt: SHALL
+        :ge: SHALL
+        :lt: SHALL
+        :le: SHALL
+        :sa: MAY
+        :eb: MAY
+        :ap: MAY
+      :values: []
+      :type: Period
+      :contains_multiple: false
+      :multiple_or: MAY
+  :include_params: []
+  :revincludes:
+  - Provenance:target
+  :required_concepts: []
+  :must_supports:
+    :extensions: []
+    :slices: []
+    :elements:
+    - :path: identifier
+    - :path: identifier.system
+    - :path: identifier.value
+    - :path: status
+    - :path: class
+    - :path: type
+    - :path: subject
+      :types:
+      - Reference
+    - :path: participant
+    - :path: participant.type
+    - :path: participant.period
+    - :path: participant.individual
+      :types:
+      - Reference
+    - :path: period
+    - :path: reasonCode
+    - :path: hospitalization
+    - :path: hospitalization.dischargeDisposition
+    - :path: location
+    - :path: location.location
+      :types:
+      - Reference
+  :mandatory_elements:
+  - Encounter.identifier.system
+  - Encounter.identifier.value
+  - Encounter.status
+  - Encounter.statusHistory.status
+  - Encounter.statusHistory.period
+  - Encounter.class
+  - Encounter.classHistory.class
+  - Encounter.classHistory.period
+  - Encounter.type
+  - Encounter.subject
+  - Encounter.diagnosis.condition
+  - Encounter.location.location
+  :bindings:
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/identifier-use
+    :path: identifier.use
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/encounter-status
+    :path: status
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/encounter-status
+    :path: statusHistory.status
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/encounter-location-status
+    :path: location.status
+  :references:
+  - :path: Encounter.identifier.assigner
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Organization
+  - :path: Encounter.subject
+    :profiles:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
+  - :path: Encounter.episodeOfCare
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/EpisodeOfCare
+  - :path: Encounter.basedOn
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/ServiceRequest
+  - :path: Encounter.participant.individual
+    :profiles:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner
+  - :path: Encounter.appointment
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Appointment
+  - :path: Encounter.reasonReference
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Condition
+    - http://hl7.org/fhir/StructureDefinition/Procedure
+    - http://hl7.org/fhir/StructureDefinition/Observation
+    - http://hl7.org/fhir/StructureDefinition/ImmunizationRecommendation
+  - :path: Encounter.diagnosis.condition
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Condition
+    - http://hl7.org/fhir/StructureDefinition/Procedure
+  - :path: Encounter.account
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Account
+  - :path: Encounter.hospitalization.origin
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Location
+    - http://hl7.org/fhir/StructureDefinition/Organization
+  - :path: Encounter.hospitalization.destination
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Location
+    - http://hl7.org/fhir/StructureDefinition/Organization
+  - :path: Encounter.location.location
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Location
+  - :path: Encounter.serviceProvider
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Organization
+  - :path: Encounter.partOf
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Encounter
+  :delayed_references:
+  - :path: participant.individual
+    :resources:
+    - Practitioner
+- :name: us_core_goal
+  :class_name: USCorev311GoalSequence
+  :version: v3.1.1
+  :reformatted_version: v311
+  :resource: Goal
+  :profile_url: http://hl7.org/fhir/us/core/StructureDefinition/us-core-goal
+  :profile_name: US Core Goal Profile
+  :profile_version: 3.1.1
+  :title: Goal
+  :short_description: Verify support for the server capabilities required by the US
+    Core Goal Profile.
+  :interactions:
+  - :code: create
+    :expectation: MAY
+  - :code: search-type
+    :expectation: SHALL
+  - :code: read
+    :expectation: SHALL
+  - :code: vread
+    :expectation: SHOULD
+  - :code: update
+    :expectation: MAY
+  - :code: patch
+    :expectation: MAY
+  - :code: delete
+    :expectation: MAY
+  - :code: history-instance
+    :expectation: SHOULD
+  - :code: history-type
+    :expectation: MAY
+  :operations: []
+  :searches:
+  - :names:
+    - patient
+    :expectation: SHALL
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - lifecycle-status
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - target-date
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  :search_definitions:
+    :patient:
+      :paths:
+      - subject
+      :full_paths:
+      - Goal.subject
+      :comparators: {}
+      :values: []
+      :type: Reference
+      :contains_multiple: false
+      :multiple_or: MAY
+    :lifecycle-status:
+      :paths:
+      - lifecycleStatus
+      :full_paths:
+      - Goal.lifecycleStatus
+      :comparators: {}
+      :values:
+      - proposed
+      - planned
+      - accepted
+      - active
+      - on-hold
+      - completed
+      - cancelled
+      - entered-in-error
+      - rejected
+      :type: code
+      :contains_multiple: false
+      :multiple_or: MAY
+    :target-date:
+      :paths:
+      - target.dueDate
+      :full_paths:
+      - Goal.target.dueDate
+      :comparators:
+        :eq: MAY
+        :ne: MAY
+        :gt: SHALL
+        :ge: SHALL
+        :lt: SHALL
+        :le: SHALL
+        :sa: MAY
+        :eb: MAY
+        :ap: MAY
+      :values: []
+      :type: date
+      :contains_multiple: false
+      :multiple_or: MAY
+  :include_params: []
+  :revincludes:
+  - Provenance:target
+  :required_concepts: []
+  :must_supports:
+    :extensions: []
+    :slices:
+    - :name: Goal.target.due[x]:dueDate
+      :path: target.due[x]
+      :discriminator:
+        :type: type
+        :code: Date
+    :elements:
+    - :path: lifecycleStatus
+    - :path: description
+    - :path: subject
+      :types:
+      - Reference
+    - :path: target
+  :mandatory_elements:
+  - Goal.lifecycleStatus
+  - Goal.description
+  - Goal.subject
+  :bindings:
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/goal-status
+    :path: lifecycleStatus
+  :references:
+  - :path: Goal.subject
+    :profiles:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
+  - :path: Goal.expressedBy
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Patient
+    - http://hl7.org/fhir/StructureDefinition/Practitioner
+    - http://hl7.org/fhir/StructureDefinition/PractitionerRole
+    - http://hl7.org/fhir/StructureDefinition/RelatedPerson
+  - :path: Goal.addresses
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Condition
+    - http://hl7.org/fhir/StructureDefinition/Observation
+    - http://hl7.org/fhir/StructureDefinition/MedicationStatement
+    - http://hl7.org/fhir/StructureDefinition/NutritionOrder
+    - http://hl7.org/fhir/StructureDefinition/ServiceRequest
+    - http://hl7.org/fhir/StructureDefinition/RiskAssessment
+  - :path: Goal.outcomeReference
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Observation
+  :delayed_references: []
+- :name: us_core_immunization
+  :class_name: USCorev311ImmunizationSequence
+  :version: v3.1.1
+  :reformatted_version: v311
+  :resource: Immunization
+  :profile_url: http://hl7.org/fhir/us/core/StructureDefinition/us-core-immunization
+  :profile_name: US Core Immunization Profile
+  :profile_version: 3.1.1
+  :title: Immunization
+  :short_description: Verify support for the server capabilities required by the US
+    Core Immunization Profile.
+  :interactions:
+  - :code: create
+    :expectation: MAY
+  - :code: search-type
+    :expectation: SHALL
+  - :code: read
+    :expectation: SHALL
+  - :code: vread
+    :expectation: SHOULD
+  - :code: update
+    :expectation: MAY
+  - :code: patch
+    :expectation: MAY
+  - :code: delete
+    :expectation: MAY
+  - :code: history-instance
+    :expectation: SHOULD
+  - :code: history-type
+    :expectation: MAY
+  :operations: []
+  :searches:
+  - :names:
+    - patient
+    :expectation: SHALL
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - date
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - status
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  :search_definitions:
+    :patient:
+      :paths:
+      - patient
+      :full_paths:
+      - Immunization.patient
+      :comparators: {}
+      :values: []
+      :type: Reference
+      :contains_multiple: false
+      :multiple_or: MAY
+    :date:
+      :paths:
+      - occurrence
+      :full_paths:
+      - Immunization.occurrence
+      :comparators:
+        :eq: MAY
+        :ne: MAY
+        :gt: SHALL
+        :ge: SHALL
+        :lt: SHALL
+        :le: SHALL
+        :sa: MAY
+        :eb: MAY
+        :ap: MAY
+      :values: []
+      :type: date
+      :contains_multiple: false
+      :multiple_or: MAY
+    :status:
+      :paths:
+      - status
+      :full_paths:
+      - Immunization.status
+      :comparators: {}
+      :values:
+      - completed
+      - entered-in-error
+      - not-done
+      :type: code
+      :contains_multiple: false
+      :multiple_or: MAY
+  :include_params: []
+  :revincludes:
+  - Provenance:target
+  :required_concepts: []
+  :must_supports:
+    :extensions: []
+    :slices: []
+    :elements:
+    - :path: status
+    - :path: statusReason
+    - :path: vaccineCode
+    - :path: patient
+      :types:
+      - Reference
+    - :path: occurrence[x]
+    - :path: primarySource
+  :mandatory_elements:
+  - Immunization.status
+  - Immunization.vaccineCode
+  - Immunization.patient
+  - Immunization.occurrence[x]
+  - Immunization.primarySource
+  - Immunization.performer.actor
+  - Immunization.protocolApplied.doseNumber[x]
+  :bindings:
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/immunization-status
+    :path: status
+  :references:
+  - :path: Immunization.patient
+    :profiles:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
+  - :path: Immunization.encounter
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Encounter
+  - :path: Immunization.location
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Location
+  - :path: Immunization.manufacturer
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Organization
+  - :path: Immunization.performer.actor
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Practitioner
+    - http://hl7.org/fhir/StructureDefinition/PractitionerRole
+    - http://hl7.org/fhir/StructureDefinition/Organization
+  - :path: Immunization.reasonReference
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Condition
+    - http://hl7.org/fhir/StructureDefinition/Observation
+    - http://hl7.org/fhir/StructureDefinition/DiagnosticReport
+  - :path: Immunization.reaction.detail
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Observation
+  - :path: Immunization.protocolApplied.authority
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Organization
+  :delayed_references: []
+- :name: us_core_location
+  :class_name: USCorev311LocationSequence
+  :version: v3.1.1
+  :reformatted_version: v311
+  :resource: Location
+  :profile_url: http://hl7.org/fhir/us/core/StructureDefinition/us-core-location
+  :profile_name: US Core Location Profile
+  :profile_version: 3.1.1
+  :title: Location
+  :short_description: Verify support for the server capabilities required by the US
+    Core Location Profile.
+  :interactions:
+  - :code: create
+    :expectation: MAY
+  - :code: search-type
+    :expectation: SHALL
+  - :code: read
+    :expectation: SHALL
+  - :code: vread
+    :expectation: SHOULD
+  - :code: update
+    :expectation: MAY
+  - :code: patch
+    :expectation: MAY
+  - :code: delete
+    :expectation: MAY
+  - :code: history-instance
+    :expectation: SHOULD
+  - :code: history-type
+    :expectation: MAY
+  :operations: []
+  :searches:
+  - :names:
+    - name
+    :expectation: SHALL
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :names:
+    - address
+    :expectation: SHALL
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :names:
+    - address-city
+    :expectation: SHOULD
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :names:
+    - address-state
+    :expectation: SHOULD
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :names:
+    - address-postalcode
+    :expectation: SHOULD
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  :search_definitions:
+    :name:
+      :paths:
+      - name
+      :full_paths:
+      - Location.name
+      :comparators: {}
+      :values: []
+      :type: string
+      :contains_multiple: false
+      :multiple_or: MAY
+    :address:
+      :paths:
+      - address
+      :full_paths:
+      - Location.address
+      :comparators: {}
+      :values: []
+      :type: Address
+      :contains_multiple: false
+      :multiple_or: MAY
+    :address-city:
+      :paths:
+      - address.city
+      :full_paths:
+      - Location.address.city
+      :comparators: {}
+      :values: []
+      :type: string
+      :contains_multiple: false
+      :multiple_or: MAY
+    :address-state:
+      :paths:
+      - address.state
+      :full_paths:
+      - Location.address.state
+      :comparators: {}
+      :values:
+      - AK
+      - AL
+      - AR
+      - AS
+      - AZ
+      - CA
+      - CO
+      - CT
+      - DC
+      - DE
+      - FL
+      - FM
+      - GA
+      - GU
+      - HI
+      - IA
+      - ID
+      - IL
+      - IN
+      - KS
+      - KY
+      - LA
+      - MA
+      - MD
+      - ME
+      - MH
+      - MI
+      - MN
+      - MO
+      - MP
+      - MS
+      - MT
+      - NC
+      - ND
+      - NE
+      - NH
+      - NJ
+      - NM
+      - NV
+      - NY
+      - OH
+      - OK
+      - OR
+      - PA
+      - PR
+      - PW
+      - RI
+      - SC
+      - SD
+      - TN
+      - TX
+      - UT
+      - VA
+      - VI
+      - VT
+      - WA
+      - WI
+      - WV
+      - WY
+      :type: string
+      :contains_multiple: false
+      :multiple_or: MAY
+    :address-postalcode:
+      :paths:
+      - address.postalCode
+      :full_paths:
+      - Location.address.postalCode
+      :comparators: {}
+      :values: []
+      :type: string
+      :contains_multiple: false
+      :multiple_or: MAY
+  :include_params: []
+  :revincludes: []
+  :required_concepts: []
+  :must_supports:
+    :extensions: []
+    :slices: []
+    :elements:
+    - :path: status
+    - :path: name
+    - :path: telecom
+    - :path: address
+    - :path: address.line
+    - :path: address.city
+    - :path: address.state
+    - :path: address.postalCode
+    - :path: managingOrganization
+      :types:
+      - Reference
+  :mandatory_elements:
+  - Location.name
+  - Location.position.longitude
+  - Location.position.latitude
+  :bindings:
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/location-status
+    :path: status
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/location-mode
+    :path: mode
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/address-use
+    :path: address.use
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/address-type
+    :path: address.type
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/days-of-week
+    :path: hoursOfOperation.daysOfWeek
+  :references:
+  - :path: Location.managingOrganization
+    :profiles:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-organization
+  - :path: Location.partOf
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Location
+  - :path: Location.endpoint
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Endpoint
+  :delayed_references:
+  - :path: managingOrganization
+    :resources:
+    - Organization
+- :name: us_core_medication
+  :class_name: USCorev311MedicationSequence
+  :version: v3.1.1
+  :reformatted_version: v311
+  :resource: Medication
+  :profile_url: http://hl7.org/fhir/us/core/StructureDefinition/us-core-medication
+  :profile_name: US Core Medication Profile
+  :profile_version: 3.1.1
+  :title: Medication
+  :short_description: Verify support for the server capabilities required by the US
+    Core Medication Profile.
+  :interactions:
+  - :code: create
+    :expectation: MAY
+  - :code: search-type
+    :expectation: MAY
+  - :code: read
+    :expectation: SHALL
+  - :code: vread
+    :expectation: SHOULD
+  - :code: update
+    :expectation: MAY
+  - :code: patch
+    :expectation: MAY
+  - :code: delete
+    :expectation: MAY
+  - :code: history-instance
+    :expectation: SHOULD
+  - :code: history-type
+    :expectation: MAY
+  :operations: []
+  :searches: []
+  :search_definitions: {}
+  :include_params: []
+  :revincludes: []
+  :required_concepts: []
+  :must_supports:
+    :extensions: []
+    :slices: []
+    :elements:
+    - :path: code
+  :mandatory_elements:
+  - Medication.code
+  - Medication.ingredient.item[x]
+  :bindings:
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/medication-status
+    :path: status
+  :references:
+  - :path: Medication.manufacturer
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Organization
+  :delayed_references: []
+- :name: us_core_medicationrequest
+  :class_name: USCorev311MedicationrequestSequence
+  :version: v3.1.1
+  :reformatted_version: v311
+  :resource: MedicationRequest
+  :profile_url: http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationrequest
+  :profile_name: US Core MedicationRequest Profile
+  :profile_version: 3.1.1
+  :title: MedicationRequest
+  :short_description: Verify support for the server capabilities required by the US
+    Core MedicationRequest Profile.
+  :interactions:
+  - :code: create
+    :expectation: MAY
+  - :code: search-type
+    :expectation: SHALL
+  - :code: read
+    :expectation: SHALL
+  - :code: vread
+    :expectation: SHOULD
+  - :code: update
+    :expectation: MAY
+  - :code: patch
+    :expectation: MAY
+  - :code: delete
+    :expectation: MAY
+  - :code: history-instance
+    :expectation: SHOULD
+  - :code: history-type
+    :expectation: MAY
+  :operations: []
+  :searches:
+  - :expectation: SHALL
+    :names:
+    - patient
+    - intent
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - intent
+    - encounter
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - intent
+    - authoredon
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHALL
+    :names:
+    - patient
+    - intent
+    - status
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  :search_definitions:
+    :patient:
+      :paths:
+      - subject
+      :full_paths:
+      - MedicationRequest.subject
+      :comparators: {}
+      :values: []
+      :type: Reference
+      :contains_multiple: false
+      :multiple_or: MAY
+    :intent:
+      :paths:
+      - intent
+      :full_paths:
+      - MedicationRequest.intent
+      :comparators: {}
+      :values:
+      - proposal
+      - plan
+      - order
+      - original-order
+      - reflex-order
+      - filler-order
+      - instance-order
+      - option
+      :type: code
+      :contains_multiple: false
+      :multiple_or: SHALL
+    :encounter:
+      :paths:
+      - encounter
+      :full_paths:
+      - MedicationRequest.encounter
+      :comparators: {}
+      :values: []
+      :type: Reference
+      :contains_multiple: false
+      :multiple_or: MAY
+    :authoredon:
+      :paths:
+      - authoredOn
+      :full_paths:
+      - MedicationRequest.authoredOn
+      :comparators:
+        :eq: MAY
+        :ne: MAY
+        :gt: SHALL
+        :ge: SHALL
+        :lt: SHALL
+        :le: SHALL
+        :sa: MAY
+        :eb: MAY
+        :ap: MAY
+      :values: []
+      :type: dateTime
+      :contains_multiple: false
+      :multiple_or: MAY
+    :status:
+      :paths:
+      - status
+      :full_paths:
+      - MedicationRequest.status
+      :comparators: {}
+      :values:
+      - active
+      - on-hold
+      - cancelled
+      - completed
+      - entered-in-error
+      - stopped
+      - draft
+      - unknown
+      :type: code
+      :contains_multiple: false
+      :multiple_or: SHALL
+  :include_params:
+  - MedicationRequest:medication
+  :revincludes:
+  - Provenance:target
+  :required_concepts: []
+  :must_supports:
+    :extensions: []
+    :slices: []
+    :elements:
+    - :path: status
+    - :path: intent
+    - :path: reported[x]
+      :types:
+      - Reference
+    - :path: medication[x]
+      :types:
+      - Reference
+    - :path: subject
+      :types:
+      - Reference
+    - :path: encounter
+      :types:
+      - Reference
+    - :path: authoredOn
+    - :path: requester
+      :types:
+      - Reference
+    - :path: dosageInstruction
+    - :path: dosageInstruction.text
+  :mandatory_elements:
+  - MedicationRequest.status
+  - MedicationRequest.intent
+  - MedicationRequest.medication[x]
+  - MedicationRequest.subject
+  - MedicationRequest.authoredOn
+  - MedicationRequest.requester
+  - MedicationRequest.substitution.allowed[x]
+  :bindings:
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/medicationrequest-status
+    :path: status
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/medicationrequest-intent
+    :path: intent
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/request-priority
+    :path: priority
+  :references:
+  - :path: MedicationRequest.subject
+    :profiles:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
+  - :path: MedicationRequest.encounter
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Encounter
+  - :path: MedicationRequest.supportingInformation
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Resource
+  - :path: MedicationRequest.requester
+    :profiles:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-organization
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
+  - :path: MedicationRequest.performer
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Practitioner
+    - http://hl7.org/fhir/StructureDefinition/PractitionerRole
+    - http://hl7.org/fhir/StructureDefinition/Organization
+    - http://hl7.org/fhir/StructureDefinition/Patient
+    - http://hl7.org/fhir/StructureDefinition/Device
+    - http://hl7.org/fhir/StructureDefinition/RelatedPerson
+    - http://hl7.org/fhir/StructureDefinition/CareTeam
+  - :path: MedicationRequest.recorder
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Practitioner
+    - http://hl7.org/fhir/StructureDefinition/PractitionerRole
+  - :path: MedicationRequest.reasonReference
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Condition
+    - http://hl7.org/fhir/StructureDefinition/Observation
+  - :path: MedicationRequest.basedOn
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/CarePlan
+    - http://hl7.org/fhir/StructureDefinition/MedicationRequest
+    - http://hl7.org/fhir/StructureDefinition/ServiceRequest
+    - http://hl7.org/fhir/StructureDefinition/ImmunizationRecommendation
+  - :path: MedicationRequest.insurance
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Coverage
+    - http://hl7.org/fhir/StructureDefinition/ClaimResponse
+  - :path: MedicationRequest.dispenseRequest.performer
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Organization
+  - :path: MedicationRequest.priorPrescription
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/MedicationRequest
+  - :path: MedicationRequest.detectedIssue
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/DetectedIssue
+  - :path: MedicationRequest.eventHistory
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Provenance
+  :delayed_references:
+  - :path: requester
+    :resources:
+    - Practitioner
+    - Organization
+- :name: us_core_smokingstatus
+  :class_name: USCorev311SmokingstatusSequence
+  :version: v3.1.1
+  :reformatted_version: v311
+  :resource: Observation
+  :profile_url: http://hl7.org/fhir/us/core/StructureDefinition/us-core-smokingstatus
+  :profile_name: US Core Smoking Status Observation Profile
+  :profile_version: 3.1.1
+  :title: Smoking Status Observation
+  :short_description: Verify support for the server capabilities required by the US
+    Core Smoking Status Observation Profile.
+  :interactions:
+  - :code: create
+    :expectation: MAY
+  - :code: search-type
+    :expectation: SHALL
+  - :code: read
+    :expectation: SHALL
+  - :code: vread
+    :expectation: SHOULD
+  - :code: update
+    :expectation: MAY
+  - :code: patch
+    :expectation: MAY
+  - :code: delete
+    :expectation: MAY
+  - :code: history-instance
+    :expectation: SHOULD
+  - :code: history-type
+    :expectation: MAY
+  :operations: []
+  :searches:
+  - :expectation: SHALL
+    :names:
+    - patient
+    - code
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHALL
+    :names:
+    - patient
+    - category
+    - date
+    :names_not_must_support_or_mandatory:
+    - category
+    - date
+    :must_support_or_mandatory: false
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - category
+    - status
+    :names_not_must_support_or_mandatory:
+    - category
+    :must_support_or_mandatory: false
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - code
+    - date
+    :names_not_must_support_or_mandatory:
+    - date
+    :must_support_or_mandatory: false
+  - :expectation: SHALL
+    :names:
+    - patient
+    - category
+    :names_not_must_support_or_mandatory:
+    - category
+    :must_support_or_mandatory: false
+  :search_definitions:
+    :patient:
+      :paths:
+      - subject
+      :full_paths:
+      - Observation.subject
+      :comparators: {}
+      :values: []
+      :type: Reference
+      :contains_multiple: false
+      :multiple_or: MAY
+    :category:
+      :paths:
+      - category
+      :full_paths:
+      - Observation.category
+      :comparators: {}
+      :values: []
+      :type: CodeableConcept
+      :contains_multiple: true
+      :multiple_or: MAY
+    :date:
+      :paths:
+      - effective
+      :full_paths:
+      - Observation.effective
+      :comparators:
+        :eq: MAY
+        :ne: MAY
+        :gt: SHALL
+        :ge: SHALL
+        :lt: SHALL
+        :le: SHALL
+        :sa: MAY
+        :eb: MAY
+        :ap: MAY
+      :values: []
+      :type: date
+      :contains_multiple: false
+      :multiple_or: MAY
+    :status:
+      :paths:
+      - status
+      :full_paths:
+      - Observation.status
+      :comparators: {}
+      :values:
+      - final
+      - entered-in-error
+      :type: code
+      :contains_multiple: false
+      :multiple_or: SHALL
+    :code:
+      :paths:
+      - code
+      :full_paths:
+      - Observation.code
+      :comparators: {}
+      :values:
+      - 72166-2
+      :type: CodeableConcept
+      :contains_multiple: false
+      :multiple_or: SHOULD
+  :include_params: &3 []
+  :revincludes: &4
+  - Provenance:target
+  :required_concepts: []
+  :must_supports:
+    :extensions: []
+    :slices:
+    - :name: Observation.value[x]:valueCodeableConcept
+      :path: value[x]
+      :discriminator:
+        :type: type
+        :code: CodeableConcept
+    :elements:
+    - :path: status
+    - :path: code
+    - :path: subject
+      :types:
+      - Reference
+    - :path: issued
+  :mandatory_elements:
+  - Observation.status
+  - Observation.code
+  - Observation.subject
+  - Observation.issued
+  - Observation.value[x]
+  - Observation.component.code
+  :bindings:
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/us/core/ValueSet/us-core-observation-smoking-status-status
+    :path: status
+  :references:
+  - :path: Observation.basedOn
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/CarePlan
+    - http://hl7.org/fhir/StructureDefinition/DeviceRequest
+    - http://hl7.org/fhir/StructureDefinition/ImmunizationRecommendation
+    - http://hl7.org/fhir/StructureDefinition/MedicationRequest
+    - http://hl7.org/fhir/StructureDefinition/NutritionOrder
+    - http://hl7.org/fhir/StructureDefinition/ServiceRequest
+  - :path: Observation.partOf
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/MedicationAdministration
+    - http://hl7.org/fhir/StructureDefinition/MedicationDispense
+    - http://hl7.org/fhir/StructureDefinition/MedicationStatement
+    - http://hl7.org/fhir/StructureDefinition/Procedure
+    - http://hl7.org/fhir/StructureDefinition/Immunization
+    - http://hl7.org/fhir/StructureDefinition/ImagingStudy
+  - :path: Observation.subject
+    :profiles:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
+  - :path: Observation.focus
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Resource
+  - :path: Observation.encounter
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Encounter
+  - :path: Observation.performer
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Practitioner
+    - http://hl7.org/fhir/StructureDefinition/PractitionerRole
+    - http://hl7.org/fhir/StructureDefinition/Organization
+    - http://hl7.org/fhir/StructureDefinition/CareTeam
+    - http://hl7.org/fhir/StructureDefinition/Patient
+    - http://hl7.org/fhir/StructureDefinition/RelatedPerson
+  - :path: Observation.specimen
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Specimen
+  - :path: Observation.device
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Device
+    - http://hl7.org/fhir/StructureDefinition/DeviceMetric
+  - :path: Observation.hasMember
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Observation
+    - http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse
+    - http://hl7.org/fhir/StructureDefinition/MolecularSequence
+  - :path: Observation.derivedFrom
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/DocumentReference
+    - http://hl7.org/fhir/StructureDefinition/ImagingStudy
+    - http://hl7.org/fhir/StructureDefinition/Media
+    - http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse
+    - http://hl7.org/fhir/StructureDefinition/Observation
+    - http://hl7.org/fhir/StructureDefinition/MolecularSequence
+  :delayed_references: []
+- :name: pediatric_weight_for_height
+  :class_name: PediatricWeightForHeightSequence
+  :version: v3.1.1
+  :reformatted_version: v311
+  :resource: Observation
+  :profile_url: http://hl7.org/fhir/us/core/StructureDefinition/pediatric-weight-for-height
+  :profile_name: US Core Pediatric Weight for Height Observation Profile
+  :profile_version: 3.1.1
+  :title: Pediatric Weight for Height Observation
+  :short_description: Verify support for the server capabilities required by the US
+    Core Pediatric Weight for Height Observation Profile.
+  :interactions:
+  - :code: create
+    :expectation: MAY
+  - :code: search-type
+    :expectation: SHALL
+  - :code: read
+    :expectation: SHALL
+  - :code: vread
+    :expectation: SHOULD
+  - :code: update
+    :expectation: MAY
+  - :code: patch
+    :expectation: MAY
+  - :code: delete
+    :expectation: MAY
+  - :code: history-instance
+    :expectation: SHOULD
+  - :code: history-type
+    :expectation: MAY
+  :operations: []
+  :searches:
+  - :expectation: SHALL
+    :names:
+    - patient
+    - code
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHALL
+    :names:
+    - patient
+    - category
+    - date
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - category
+    - status
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - code
+    - date
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHALL
+    :names:
+    - patient
+    - category
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  :search_definitions:
+    :patient:
+      :paths:
+      - subject
+      :full_paths:
+      - Observation.subject
+      :comparators: {}
+      :values: []
+      :type: Reference
+      :contains_multiple: false
+      :multiple_or: MAY
+    :category:
+      :paths:
+      - category
+      :full_paths:
+      - Observation.category
+      :comparators: {}
+      :values:
+      - vital-signs
+      :type: CodeableConcept
+      :contains_multiple: true
+      :multiple_or: MAY
+    :date:
+      :paths:
+      - effective
+      :full_paths:
+      - Observation.effective
+      :comparators:
+        :eq: MAY
+        :ne: MAY
+        :gt: SHALL
+        :ge: SHALL
+        :lt: SHALL
+        :le: SHALL
+        :sa: MAY
+        :eb: MAY
+        :ap: MAY
+      :values: []
+      :type: date
+      :contains_multiple: false
+      :multiple_or: MAY
+    :status:
+      :paths:
+      - status
+      :full_paths:
+      - Observation.status
+      :comparators: {}
+      :values:
+      - registered
+      - preliminary
+      - final
+      - amended
+      - corrected
+      - cancelled
+      - entered-in-error
+      - unknown
+      :type: code
+      :contains_multiple: false
+      :multiple_or: SHALL
+    :code:
+      :paths:
+      - code
+      :full_paths:
+      - Observation.code
+      :comparators: {}
+      :values:
+      - 77606-2
+      :type: CodeableConcept
+      :contains_multiple: false
+      :multiple_or: SHOULD
+  :include_params: *3
+  :revincludes: *4
+  :required_concepts: []
+  :must_supports:
+    :extensions: []
+    :slices:
+    - :name: Observation.value[x]:valueQuantity
+      :path: value[x]
+      :discriminator:
+        :type: type
+        :code: Quantity
+    - :name: Observation.category:VSCat
+      :path: category
+      :discriminator:
+        :type: value
+        :values:
+        - :path: coding.code
+          :value: vital-signs
+        - :path: coding.system
+          :value: http://terminology.hl7.org/CodeSystem/observation-category
+    :elements:
+    - :path: status
+    - :path: category
+    - :path: category.coding
+    - :path: category.coding.system
+      :fixed_value: http://terminology.hl7.org/CodeSystem/observation-category
+    - :path: category.coding.code
+      :fixed_value: vital-signs
+    - :path: code.coding.code
+      :fixed_value: 77606-2
+    - :path: subject
+      :types:
+      - Reference
+    - :path: effective[x]
+    - :path: value[x]
+    - :path: value[x].value
+    - :path: value[x].unit
+    - :path: value[x].system
+      :fixed_value: http://unitsofmeasure.org
+    - :path: value[x].code
+      :fixed_value: "%"
+  :mandatory_elements:
+  - Observation.status
+  - Observation.category
+  - Observation.category.coding
+  - Observation.category.coding.system
+  - Observation.category.coding.code
+  - Observation.code
+  - Observation.subject
+  - Observation.effective[x]
+  - Observation.value[x].value
+  - Observation.value[x].unit
+  - Observation.value[x].system
+  - Observation.value[x].code
+  - Observation.component.code
+  :bindings:
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/observation-status
+    :path: status
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/quantity-comparator
+    :path: value.comparator
+  - :type: Quantity
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/ucum-vitals-common
+    :path: component.value
+  :references:
+  - :path: Observation.basedOn
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/CarePlan
+    - http://hl7.org/fhir/StructureDefinition/DeviceRequest
+    - http://hl7.org/fhir/StructureDefinition/ImmunizationRecommendation
+    - http://hl7.org/fhir/StructureDefinition/MedicationRequest
+    - http://hl7.org/fhir/StructureDefinition/NutritionOrder
+    - http://hl7.org/fhir/StructureDefinition/ServiceRequest
+  - :path: Observation.partOf
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/MedicationAdministration
+    - http://hl7.org/fhir/StructureDefinition/MedicationDispense
+    - http://hl7.org/fhir/StructureDefinition/MedicationStatement
+    - http://hl7.org/fhir/StructureDefinition/Procedure
+    - http://hl7.org/fhir/StructureDefinition/Immunization
+    - http://hl7.org/fhir/StructureDefinition/ImagingStudy
+  - :path: Observation.subject
+    :profiles:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
+  - :path: Observation.focus
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Resource
+  - :path: Observation.encounter
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Encounter
+  - :path: Observation.performer
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Practitioner
+    - http://hl7.org/fhir/StructureDefinition/PractitionerRole
+    - http://hl7.org/fhir/StructureDefinition/Organization
+    - http://hl7.org/fhir/StructureDefinition/CareTeam
+    - http://hl7.org/fhir/StructureDefinition/Patient
+    - http://hl7.org/fhir/StructureDefinition/RelatedPerson
+  - :path: Observation.specimen
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Specimen
+  - :path: Observation.device
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Device
+    - http://hl7.org/fhir/StructureDefinition/DeviceMetric
+  - :path: Observation.hasMember
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse
+    - http://hl7.org/fhir/StructureDefinition/MolecularSequence
+    - http://hl7.org/fhir/StructureDefinition/vitalsigns
+  - :path: Observation.derivedFrom
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/DocumentReference
+    - http://hl7.org/fhir/StructureDefinition/ImagingStudy
+    - http://hl7.org/fhir/StructureDefinition/Media
+    - http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse
+    - http://hl7.org/fhir/StructureDefinition/MolecularSequence
+    - http://hl7.org/fhir/StructureDefinition/vitalsigns
+  :delayed_references: []
+- :name: us_core_observation_lab
+  :class_name: USCorev311ObservationLabSequence
+  :version: v3.1.1
+  :reformatted_version: v311
+  :resource: Observation
+  :profile_url: http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab
+  :profile_name: US Core Laboratory Result Observation Profile
+  :profile_version: 3.1.1
+  :title: Laboratory Result Observation
+  :short_description: Verify support for the server capabilities required by the US
+    Core Laboratory Result Observation Profile.
+  :interactions:
+  - :code: create
+    :expectation: MAY
+  - :code: search-type
+    :expectation: SHALL
+  - :code: read
+    :expectation: SHALL
+  - :code: vread
+    :expectation: SHOULD
+  - :code: update
+    :expectation: MAY
+  - :code: patch
+    :expectation: MAY
+  - :code: delete
+    :expectation: MAY
+  - :code: history-instance
+    :expectation: SHOULD
+  - :code: history-type
+    :expectation: MAY
+  :operations: []
+  :searches:
+  - :expectation: SHALL
+    :names:
+    - patient
+    - category
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHALL
+    :names:
+    - patient
+    - category
+    - date
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - category
+    - status
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - code
+    - date
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHALL
+    :names:
+    - patient
+    - code
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  :search_definitions:
+    :patient:
+      :paths:
+      - subject
+      :full_paths:
+      - Observation.subject
+      :comparators: {}
+      :values: []
+      :type: Reference
+      :contains_multiple: false
+      :multiple_or: MAY
+    :category:
+      :paths:
+      - category
+      :full_paths:
+      - Observation.category
+      :comparators: {}
+      :values:
+      - laboratory
+      :type: CodeableConcept
+      :contains_multiple: true
+      :multiple_or: MAY
+    :date:
+      :paths:
+      - effective
+      :full_paths:
+      - Observation.effective
+      :comparators:
+        :eq: MAY
+        :ne: MAY
+        :gt: SHALL
+        :ge: SHALL
+        :lt: SHALL
+        :le: SHALL
+        :sa: MAY
+        :eb: MAY
+        :ap: MAY
+      :values: []
+      :type: date
+      :contains_multiple: false
+      :multiple_or: MAY
+    :status:
+      :paths:
+      - status
+      :full_paths:
+      - Observation.status
+      :comparators: {}
+      :values:
+      - registered
+      - preliminary
+      - final
+      - amended
+      - corrected
+      - cancelled
+      - entered-in-error
+      - unknown
+      :type: code
+      :contains_multiple: false
+      :multiple_or: SHALL
+    :code:
+      :paths:
+      - code
+      :full_paths:
+      - Observation.code
+      :comparators: {}
+      :values: []
+      :type: CodeableConcept
+      :contains_multiple: false
+      :multiple_or: SHOULD
+  :include_params: *3
+  :revincludes: *4
+  :required_concepts: []
+  :must_supports:
+    :extensions: []
+    :slices:
+    - :name: Observation.category:Laboratory
+      :path: category
+      :discriminator:
+        :type: patternCodeableConcept
+        :path: ''
+        :code: laboratory
+        :system: http://terminology.hl7.org/CodeSystem/observation-category
+    :elements:
+    - :path: status
+    - :path: category
+    - :path: code
+    - :path: subject
+      :types:
+      - Reference
+    - :path: effective[x]
+    - :path: value[x]
+  :mandatory_elements:
+  - Observation.status
+  - Observation.category
+  - Observation.code
+  - Observation.subject
+  - Observation.component.code
+  :bindings:
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/observation-status
+    :path: status
+  :references:
+  - :path: Observation.basedOn
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/CarePlan
+    - http://hl7.org/fhir/StructureDefinition/DeviceRequest
+    - http://hl7.org/fhir/StructureDefinition/ImmunizationRecommendation
+    - http://hl7.org/fhir/StructureDefinition/MedicationRequest
+    - http://hl7.org/fhir/StructureDefinition/NutritionOrder
+    - http://hl7.org/fhir/StructureDefinition/ServiceRequest
+  - :path: Observation.partOf
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/MedicationAdministration
+    - http://hl7.org/fhir/StructureDefinition/MedicationDispense
+    - http://hl7.org/fhir/StructureDefinition/MedicationStatement
+    - http://hl7.org/fhir/StructureDefinition/Procedure
+    - http://hl7.org/fhir/StructureDefinition/Immunization
+    - http://hl7.org/fhir/StructureDefinition/ImagingStudy
+  - :path: Observation.subject
+    :profiles:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
+  - :path: Observation.focus
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Resource
+  - :path: Observation.encounter
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Encounter
+  - :path: Observation.performer
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Practitioner
+    - http://hl7.org/fhir/StructureDefinition/PractitionerRole
+    - http://hl7.org/fhir/StructureDefinition/Organization
+    - http://hl7.org/fhir/StructureDefinition/CareTeam
+    - http://hl7.org/fhir/StructureDefinition/Patient
+    - http://hl7.org/fhir/StructureDefinition/RelatedPerson
+  - :path: Observation.specimen
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Specimen
+  - :path: Observation.device
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Device
+    - http://hl7.org/fhir/StructureDefinition/DeviceMetric
+  - :path: Observation.hasMember
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Observation
+    - http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse
+    - http://hl7.org/fhir/StructureDefinition/MolecularSequence
+  - :path: Observation.derivedFrom
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/DocumentReference
+    - http://hl7.org/fhir/StructureDefinition/ImagingStudy
+    - http://hl7.org/fhir/StructureDefinition/Media
+    - http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse
+    - http://hl7.org/fhir/StructureDefinition/Observation
+    - http://hl7.org/fhir/StructureDefinition/MolecularSequence
+  :delayed_references: []
+- :name: pediatric_bmi_for_age
+  :class_name: PediatricBmiForAgeSequence
+  :version: v3.1.1
+  :reformatted_version: v311
+  :resource: Observation
+  :profile_url: http://hl7.org/fhir/us/core/StructureDefinition/pediatric-bmi-for-age
+  :profile_name: US Core Pediatric BMI for Age Observation Profile
+  :profile_version: 3.1.1
+  :title: Pediatric BMI for Age Observation
+  :short_description: Verify support for the server capabilities required by the US
+    Core Pediatric BMI for Age Observation Profile.
+  :interactions:
+  - :code: create
+    :expectation: MAY
+  - :code: search-type
+    :expectation: SHALL
+  - :code: read
+    :expectation: SHALL
+  - :code: vread
+    :expectation: SHOULD
+  - :code: update
+    :expectation: MAY
+  - :code: patch
+    :expectation: MAY
+  - :code: delete
+    :expectation: MAY
+  - :code: history-instance
+    :expectation: SHOULD
+  - :code: history-type
+    :expectation: MAY
+  :operations: []
+  :searches:
+  - :expectation: SHALL
+    :names:
+    - patient
+    - code
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHALL
+    :names:
+    - patient
+    - category
+    - date
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - category
+    - status
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - code
+    - date
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHALL
+    :names:
+    - patient
+    - category
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  :search_definitions:
+    :patient:
+      :paths:
+      - subject
+      :full_paths:
+      - Observation.subject
+      :comparators: {}
+      :values: []
+      :type: Reference
+      :contains_multiple: false
+      :multiple_or: MAY
+    :category:
+      :paths:
+      - category
+      :full_paths:
+      - Observation.category
+      :comparators: {}
+      :values:
+      - vital-signs
+      :type: CodeableConcept
+      :contains_multiple: true
+      :multiple_or: MAY
+    :date:
+      :paths:
+      - effective
+      :full_paths:
+      - Observation.effective
+      :comparators:
+        :eq: MAY
+        :ne: MAY
+        :gt: SHALL
+        :ge: SHALL
+        :lt: SHALL
+        :le: SHALL
+        :sa: MAY
+        :eb: MAY
+        :ap: MAY
+      :values: []
+      :type: date
+      :contains_multiple: false
+      :multiple_or: MAY
+    :status:
+      :paths:
+      - status
+      :full_paths:
+      - Observation.status
+      :comparators: {}
+      :values:
+      - registered
+      - preliminary
+      - final
+      - amended
+      - corrected
+      - cancelled
+      - entered-in-error
+      - unknown
+      :type: code
+      :contains_multiple: false
+      :multiple_or: SHALL
+    :code:
+      :paths:
+      - code
+      :full_paths:
+      - Observation.code
+      :comparators: {}
+      :values:
+      - 59576-9
+      :type: CodeableConcept
+      :contains_multiple: false
+      :multiple_or: SHOULD
+  :include_params: *3
+  :revincludes: *4
+  :required_concepts: []
+  :must_supports:
+    :extensions: []
+    :slices:
+    - :name: Observation.value[x]:valueQuantity
+      :path: value[x]
+      :discriminator:
+        :type: type
+        :code: Quantity
+    - :name: Observation.category:VSCat
+      :path: category
+      :discriminator:
+        :type: value
+        :values:
+        - :path: coding.code
+          :value: vital-signs
+        - :path: coding.system
+          :value: http://terminology.hl7.org/CodeSystem/observation-category
+    :elements:
+    - :path: status
+    - :path: category
+    - :path: category.coding
+    - :path: category.coding.system
+      :fixed_value: http://terminology.hl7.org/CodeSystem/observation-category
+    - :path: category.coding.code
+      :fixed_value: vital-signs
+    - :path: code.coding.code
+      :fixed_value: 59576-9
+    - :path: subject
+      :types:
+      - Reference
+    - :path: effective[x]
+    - :path: value[x]
+    - :path: value[x].value
+    - :path: value[x].unit
+    - :path: value[x].system
+      :fixed_value: http://unitsofmeasure.org
+    - :path: value[x].code
+      :fixed_value: "%"
+  :mandatory_elements:
+  - Observation.status
+  - Observation.category
+  - Observation.category.coding
+  - Observation.category.coding.system
+  - Observation.category.coding.code
+  - Observation.code
+  - Observation.subject
+  - Observation.effective[x]
+  - Observation.value[x].value
+  - Observation.value[x].unit
+  - Observation.value[x].system
+  - Observation.value[x].code
+  - Observation.component.code
+  :bindings:
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/observation-status
+    :path: status
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/quantity-comparator
+    :path: value.comparator
+  - :type: Quantity
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/ucum-vitals-common
+    :path: component.value
+  :references:
+  - :path: Observation.basedOn
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/CarePlan
+    - http://hl7.org/fhir/StructureDefinition/DeviceRequest
+    - http://hl7.org/fhir/StructureDefinition/ImmunizationRecommendation
+    - http://hl7.org/fhir/StructureDefinition/MedicationRequest
+    - http://hl7.org/fhir/StructureDefinition/NutritionOrder
+    - http://hl7.org/fhir/StructureDefinition/ServiceRequest
+  - :path: Observation.partOf
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/MedicationAdministration
+    - http://hl7.org/fhir/StructureDefinition/MedicationDispense
+    - http://hl7.org/fhir/StructureDefinition/MedicationStatement
+    - http://hl7.org/fhir/StructureDefinition/Procedure
+    - http://hl7.org/fhir/StructureDefinition/Immunization
+    - http://hl7.org/fhir/StructureDefinition/ImagingStudy
+  - :path: Observation.subject
+    :profiles:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
+  - :path: Observation.focus
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Resource
+  - :path: Observation.encounter
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Encounter
+  - :path: Observation.performer
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Practitioner
+    - http://hl7.org/fhir/StructureDefinition/PractitionerRole
+    - http://hl7.org/fhir/StructureDefinition/Organization
+    - http://hl7.org/fhir/StructureDefinition/CareTeam
+    - http://hl7.org/fhir/StructureDefinition/Patient
+    - http://hl7.org/fhir/StructureDefinition/RelatedPerson
+  - :path: Observation.specimen
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Specimen
+  - :path: Observation.device
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Device
+    - http://hl7.org/fhir/StructureDefinition/DeviceMetric
+  - :path: Observation.hasMember
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse
+    - http://hl7.org/fhir/StructureDefinition/MolecularSequence
+    - http://hl7.org/fhir/StructureDefinition/vitalsigns
+  - :path: Observation.derivedFrom
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/DocumentReference
+    - http://hl7.org/fhir/StructureDefinition/ImagingStudy
+    - http://hl7.org/fhir/StructureDefinition/Media
+    - http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse
+    - http://hl7.org/fhir/StructureDefinition/MolecularSequence
+    - http://hl7.org/fhir/StructureDefinition/vitalsigns
+  :delayed_references: []
+- :name: us_core_pulse_oximetry
+  :class_name: USCorev311PulseOximetrySequence
+  :version: v3.1.1
+  :reformatted_version: v311
+  :resource: Observation
+  :profile_url: http://hl7.org/fhir/us/core/StructureDefinition/us-core-pulse-oximetry
+  :profile_name: US Core Pulse Oximetry Profile
+  :profile_version: 3.1.1
+  :title: Pulse Oximetry
+  :short_description: Verify support for the server capabilities required by the US
+    Core Pulse Oximetry Profile.
+  :interactions:
+  - :code: create
+    :expectation: MAY
+  - :code: search-type
+    :expectation: SHALL
+  - :code: read
+    :expectation: SHALL
+  - :code: vread
+    :expectation: SHOULD
+  - :code: update
+    :expectation: MAY
+  - :code: patch
+    :expectation: MAY
+  - :code: delete
+    :expectation: MAY
+  - :code: history-instance
+    :expectation: SHOULD
+  - :code: history-type
+    :expectation: MAY
+  :operations: []
+  :searches:
+  - :expectation: SHALL
+    :names:
+    - patient
+    - code
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHALL
+    :names:
+    - patient
+    - category
+    - date
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - category
+    - status
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - code
+    - date
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHALL
+    :names:
+    - patient
+    - category
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  :search_definitions:
+    :patient:
+      :paths:
+      - subject
+      :full_paths:
+      - Observation.subject
+      :comparators: {}
+      :values: []
+      :type: Reference
+      :contains_multiple: false
+      :multiple_or: MAY
+    :category:
+      :paths:
+      - category
+      :full_paths:
+      - Observation.category
+      :comparators: {}
+      :values:
+      - vital-signs
+      :type: CodeableConcept
+      :contains_multiple: true
+      :multiple_or: MAY
+    :date:
+      :paths:
+      - effective
+      :full_paths:
+      - Observation.effective
+      :comparators:
+        :eq: MAY
+        :ne: MAY
+        :gt: SHALL
+        :ge: SHALL
+        :lt: SHALL
+        :le: SHALL
+        :sa: MAY
+        :eb: MAY
+        :ap: MAY
+      :values: []
+      :type: date
+      :contains_multiple: false
+      :multiple_or: MAY
+    :status:
+      :paths:
+      - status
+      :full_paths:
+      - Observation.status
+      :comparators: {}
+      :values:
+      - registered
+      - preliminary
+      - final
+      - amended
+      - corrected
+      - cancelled
+      - entered-in-error
+      - unknown
+      :type: code
+      :contains_multiple: false
+      :multiple_or: SHALL
+    :code:
+      :paths:
+      - code
+      :full_paths:
+      - Observation.code
+      :comparators: {}
+      :values:
+      - 2708-6
+      - 59408-5
+      :type: CodeableConcept
+      :contains_multiple: false
+      :multiple_or: SHOULD
+  :include_params: *3
+  :revincludes: *4
+  :required_concepts: []
+  :must_supports:
+    :extensions: []
+    :slices:
+    - :name: Observation.component:FlowRate
+      :path: component
+      :discriminator:
+        :type: patternCodeableConcept
+        :path: code
+        :code: 3151-8
+        :system: http://loinc.org
+    - :name: Observation.component:Concentration
+      :path: component
+      :discriminator:
+        :type: patternCodeableConcept
+        :path: code
+        :code: 3150-0
+        :system: http://loinc.org
+    - :name: Observation.value[x]:valueQuantity
+      :path: value[x]
+      :discriminator:
+        :type: type
+        :code: Quantity
+    - :name: Observation.category:VSCat
+      :path: category
+      :discriminator:
+        :type: value
+        :values:
+        - :path: coding.code
+          :value: vital-signs
+        - :path: coding.system
+          :value: http://terminology.hl7.org/CodeSystem/observation-category
+    - :name: Observation.code.coding:PulseOx
+      :path: code.coding
+      :discriminator:
+        :type: value
+        :values:
+        - :path: code
+          :value: 59408-5
+        - :path: system
+          :value: http://loinc.org
+    :elements:
+    - :path: status
+    - :path: category
+    - :path: category.coding
+    - :path: category.coding.system
+      :fixed_value: http://terminology.hl7.org/CodeSystem/observation-category
+    - :path: category.coding.code
+      :fixed_value: vital-signs
+    - :path: code
+    - :path: code.coding
+    - :path: code.coding.system
+      :fixed_value: http://loinc.org
+    - :path: code.coding.code
+      :fixed_value: 59408-5
+    - :path: subject
+      :types:
+      - Reference
+    - :path: effective[x]
+    - :path: value[x]
+    - :path: value[x].value
+    - :path: value[x].unit
+    - :path: value[x].system
+      :fixed_value: http://unitsofmeasure.org
+    - :path: value[x].code
+      :fixed_value: "%"
+    - :path: component
+    - :path: component.code
+    - :path: component.code.coding.code
+      :fixed_value: 3151-8
+    - :path: component.value[x].system
+      :fixed_value: http://unitsofmeasure.org
+    - :path: component.value[x].code
+      :fixed_value: L/min
+    - :path: component.code.coding.code
+      :fixed_value: 3150-0
+    - :path: component.value[x]
+    - :path: component.value[x].value
+    - :path: component.value[x].unit
+    - :path: component.value[x].code
+      :fixed_value: "%"
+  :mandatory_elements:
+  - Observation.status
+  - Observation.category
+  - Observation.category.coding
+  - Observation.category.coding.system
+  - Observation.category.coding.code
+  - Observation.code
+  - Observation.code.coding
+  - Observation.code.coding.system
+  - Observation.code.coding.code
+  - Observation.subject
+  - Observation.effective[x]
+  - Observation.value[x].value
+  - Observation.value[x].unit
+  - Observation.value[x].system
+  - Observation.value[x].code
+  - Observation.component.code
+  - Observation.component.value[x].value
+  - Observation.component.value[x].unit
+  - Observation.component.value[x].system
+  - Observation.component.value[x].code
+  :bindings:
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/observation-status
+    :path: status
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/quantity-comparator
+    :path: value.comparator
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/quantity-comparator
+    :path: component.value.comparator
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/quantity-comparator
+    :path: component.value.comparator
+  :references:
+  - :path: Observation.basedOn
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/CarePlan
+    - http://hl7.org/fhir/StructureDefinition/DeviceRequest
+    - http://hl7.org/fhir/StructureDefinition/ImmunizationRecommendation
+    - http://hl7.org/fhir/StructureDefinition/MedicationRequest
+    - http://hl7.org/fhir/StructureDefinition/NutritionOrder
+    - http://hl7.org/fhir/StructureDefinition/ServiceRequest
+  - :path: Observation.partOf
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/MedicationAdministration
+    - http://hl7.org/fhir/StructureDefinition/MedicationDispense
+    - http://hl7.org/fhir/StructureDefinition/MedicationStatement
+    - http://hl7.org/fhir/StructureDefinition/Procedure
+    - http://hl7.org/fhir/StructureDefinition/Immunization
+    - http://hl7.org/fhir/StructureDefinition/ImagingStudy
+  - :path: Observation.subject
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Patient
+  - :path: Observation.focus
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Resource
+  - :path: Observation.encounter
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Encounter
+  - :path: Observation.performer
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Practitioner
+    - http://hl7.org/fhir/StructureDefinition/PractitionerRole
+    - http://hl7.org/fhir/StructureDefinition/Organization
+    - http://hl7.org/fhir/StructureDefinition/CareTeam
+    - http://hl7.org/fhir/StructureDefinition/Patient
+    - http://hl7.org/fhir/StructureDefinition/RelatedPerson
+  - :path: Observation.specimen
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Specimen
+  - :path: Observation.device
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Device
+    - http://hl7.org/fhir/StructureDefinition/DeviceMetric
+  - :path: Observation.hasMember
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse
+    - http://hl7.org/fhir/StructureDefinition/MolecularSequence
+    - http://hl7.org/fhir/StructureDefinition/vitalsigns
+  - :path: Observation.derivedFrom
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/DocumentReference
+    - http://hl7.org/fhir/StructureDefinition/ImagingStudy
+    - http://hl7.org/fhir/StructureDefinition/Media
+    - http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse
+    - http://hl7.org/fhir/StructureDefinition/MolecularSequence
+    - http://hl7.org/fhir/StructureDefinition/vitalsigns
+  :delayed_references: []
+- :name: head_occipital_frontal_circumference_percentile
+  :class_name: HeadOccipitalFrontalCircumferencePercentileSequence
+  :version: v3.1.1
+  :reformatted_version: v311
+  :resource: Observation
+  :profile_url: http://hl7.org/fhir/us/core/StructureDefinition/head-occipital-frontal-circumference-percentile
+  :profile_name: US Core Pediatric Head Occipital-frontal Circumference Percentile
+    Profile
+  :profile_version: 3.1.1
+  :title: Pediatric Head Occipital-frontal Circumference Percentile
+  :short_description: Verify support for the server capabilities required by the US
+    Core Pediatric Head Occipital-frontal Circumference Percentile Profile.
+  :interactions:
+  - :code: create
+    :expectation: MAY
+  - :code: search-type
+    :expectation: SHALL
+  - :code: read
+    :expectation: SHALL
+  - :code: vread
+    :expectation: SHOULD
+  - :code: update
+    :expectation: MAY
+  - :code: patch
+    :expectation: MAY
+  - :code: delete
+    :expectation: MAY
+  - :code: history-instance
+    :expectation: SHOULD
+  - :code: history-type
+    :expectation: MAY
+  :operations: []
+  :searches:
+  - :expectation: SHALL
+    :names:
+    - patient
+    - code
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHALL
+    :names:
+    - patient
+    - category
+    - date
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - category
+    - status
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - code
+    - date
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHALL
+    :names:
+    - patient
+    - category
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  :search_definitions:
+    :patient:
+      :paths:
+      - subject
+      :full_paths:
+      - Observation.subject
+      :comparators: {}
+      :values: []
+      :type: Reference
+      :contains_multiple: false
+      :multiple_or: MAY
+    :category:
+      :paths:
+      - category
+      :full_paths:
+      - Observation.category
+      :comparators: {}
+      :values:
+      - vital-signs
+      :type: CodeableConcept
+      :contains_multiple: true
+      :multiple_or: MAY
+    :date:
+      :paths:
+      - effective
+      :full_paths:
+      - Observation.effective
+      :comparators:
+        :eq: MAY
+        :ne: MAY
+        :gt: SHALL
+        :ge: SHALL
+        :lt: SHALL
+        :le: SHALL
+        :sa: MAY
+        :eb: MAY
+        :ap: MAY
+      :values: []
+      :type: date
+      :contains_multiple: false
+      :multiple_or: MAY
+    :status:
+      :paths:
+      - status
+      :full_paths:
+      - Observation.status
+      :comparators: {}
+      :values:
+      - registered
+      - preliminary
+      - final
+      - amended
+      - corrected
+      - cancelled
+      - entered-in-error
+      - unknown
+      :type: code
+      :contains_multiple: false
+      :multiple_or: SHALL
+    :code:
+      :paths:
+      - code
+      :full_paths:
+      - Observation.code
+      :comparators: {}
+      :values:
+      - 8289-1
+      :type: CodeableConcept
+      :contains_multiple: false
+      :multiple_or: SHOULD
+  :include_params: *3
+  :revincludes: *4
+  :required_concepts: []
+  :must_supports:
+    :extensions: []
+    :slices:
+    - :name: Observation.value[x]:valueQuantity
+      :path: value[x]
+      :discriminator:
+        :type: type
+        :code: Quantity
+    - :name: Observation.category:VSCat
+      :path: category
+      :discriminator:
+        :type: value
+        :values:
+        - :path: coding.code
+          :value: vital-signs
+        - :path: coding.system
+          :value: http://terminology.hl7.org/CodeSystem/observation-category
+    :elements:
+    - :path: status
+    - :path: category
+    - :path: category.coding
+    - :path: category.coding.system
+      :fixed_value: http://terminology.hl7.org/CodeSystem/observation-category
+    - :path: category.coding.code
+      :fixed_value: vital-signs
+    - :path: code.coding.code
+      :fixed_value: 8289-1
+    - :path: subject
+      :types:
+      - Reference
+    - :path: effective[x]
+    - :path: value[x]
+    - :path: value[x].value
+    - :path: value[x].unit
+    - :path: value[x].system
+      :fixed_value: http://unitsofmeasure.org
+    - :path: value[x].code
+      :fixed_value: "%"
+  :mandatory_elements:
+  - Observation.status
+  - Observation.category
+  - Observation.category.coding
+  - Observation.category.coding.system
+  - Observation.category.coding.code
+  - Observation.code
+  - Observation.subject
+  - Observation.effective[x]
+  - Observation.value[x].value
+  - Observation.value[x].unit
+  - Observation.value[x].system
+  - Observation.value[x].code
+  - Observation.component.code
+  :bindings:
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/observation-status
+    :path: status
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/quantity-comparator
+    :path: value.comparator
+  - :type: Quantity
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/ucum-vitals-common
+    :path: component.value
+  :references:
+  - :path: Observation.basedOn
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/CarePlan
+    - http://hl7.org/fhir/StructureDefinition/DeviceRequest
+    - http://hl7.org/fhir/StructureDefinition/ImmunizationRecommendation
+    - http://hl7.org/fhir/StructureDefinition/MedicationRequest
+    - http://hl7.org/fhir/StructureDefinition/NutritionOrder
+    - http://hl7.org/fhir/StructureDefinition/ServiceRequest
+  - :path: Observation.partOf
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/MedicationAdministration
+    - http://hl7.org/fhir/StructureDefinition/MedicationDispense
+    - http://hl7.org/fhir/StructureDefinition/MedicationStatement
+    - http://hl7.org/fhir/StructureDefinition/Procedure
+    - http://hl7.org/fhir/StructureDefinition/Immunization
+    - http://hl7.org/fhir/StructureDefinition/ImagingStudy
+  - :path: Observation.subject
+    :profiles:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
+  - :path: Observation.focus
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Resource
+  - :path: Observation.encounter
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Encounter
+  - :path: Observation.performer
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Practitioner
+    - http://hl7.org/fhir/StructureDefinition/PractitionerRole
+    - http://hl7.org/fhir/StructureDefinition/Organization
+    - http://hl7.org/fhir/StructureDefinition/CareTeam
+    - http://hl7.org/fhir/StructureDefinition/Patient
+    - http://hl7.org/fhir/StructureDefinition/RelatedPerson
+  - :path: Observation.specimen
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Specimen
+  - :path: Observation.device
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Device
+    - http://hl7.org/fhir/StructureDefinition/DeviceMetric
+  - :path: Observation.hasMember
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse
+    - http://hl7.org/fhir/StructureDefinition/MolecularSequence
+    - http://hl7.org/fhir/StructureDefinition/vitalsigns
+  - :path: Observation.derivedFrom
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/DocumentReference
+    - http://hl7.org/fhir/StructureDefinition/ImagingStudy
+    - http://hl7.org/fhir/StructureDefinition/Media
+    - http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse
+    - http://hl7.org/fhir/StructureDefinition/MolecularSequence
+    - http://hl7.org/fhir/StructureDefinition/vitalsigns
+  :delayed_references: []
+- :name: bodyheight
+  :class_name: BodyheightSequence
+  :version: v3.1.1
+  :reformatted_version: v311
+  :resource: Observation
+  :profile_url: http://hl7.org/fhir/StructureDefinition/bodyheight
+  :profile_name: Observation Body Height Profile
+  :profile_version: 4.0.1
+  :title: Observation Body Height
+  :short_description: Verify support for the server capabilities required by the Observation
+    Body Height Profile.
+  :interactions:
+  - :code: create
+    :expectation: MAY
+  - :code: search-type
+    :expectation: SHALL
+  - :code: read
+    :expectation: SHALL
+  - :code: vread
+    :expectation: SHOULD
+  - :code: update
+    :expectation: MAY
+  - :code: patch
+    :expectation: MAY
+  - :code: delete
+    :expectation: MAY
+  - :code: history-instance
+    :expectation: SHOULD
+  - :code: history-type
+    :expectation: MAY
+  :operations: []
+  :searches:
+  - :expectation: SHALL
+    :names:
+    - patient
+    - code
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHALL
+    :names:
+    - patient
+    - category
+    - date
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - category
+    - status
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - code
+    - date
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHALL
+    :names:
+    - patient
+    - category
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  :search_definitions:
+    :patient:
+      :paths:
+      - subject
+      :full_paths:
+      - Observation.subject
+      :comparators: {}
+      :values: []
+      :type: Reference
+      :contains_multiple: false
+      :multiple_or: MAY
+    :category:
+      :paths:
+      - category
+      :full_paths:
+      - Observation.category
+      :comparators: {}
+      :values:
+      - vital-signs
+      :type: CodeableConcept
+      :contains_multiple: true
+      :multiple_or: MAY
+    :date:
+      :paths:
+      - effective
+      :full_paths:
+      - Observation.effective
+      :comparators:
+        :eq: MAY
+        :ne: MAY
+        :gt: SHALL
+        :ge: SHALL
+        :lt: SHALL
+        :le: SHALL
+        :sa: MAY
+        :eb: MAY
+        :ap: MAY
+      :values: []
+      :type: date
+      :contains_multiple: false
+      :multiple_or: MAY
+    :status:
+      :paths:
+      - status
+      :full_paths:
+      - Observation.status
+      :comparators: {}
+      :values:
+      - registered
+      - preliminary
+      - final
+      - amended
+      - corrected
+      - cancelled
+      - entered-in-error
+      - unknown
+      :type: code
+      :contains_multiple: false
+      :multiple_or: SHALL
+    :code:
+      :paths:
+      - code
+      :full_paths:
+      - Observation.code
+      :comparators: {}
+      :values:
+      - 8302-2
+      :type: CodeableConcept
+      :contains_multiple: false
+      :multiple_or: SHOULD
+  :include_params: *3
+  :revincludes: *4
+  :required_concepts: []
+  :must_supports:
+    :extensions: []
+    :slices:
+    - :name: Observation.value[x]:valueQuantity
+      :path: value[x]
+      :discriminator:
+        :type: type
+        :code: Quantity
+    - :name: Observation.category:VSCat
+      :path: category
+      :discriminator:
+        :type: value
+        :values:
+        - :path: coding.code
+          :value: vital-signs
+        - :path: coding.system
+          :value: http://terminology.hl7.org/CodeSystem/observation-category
+    :elements:
+    - :path: status
+    - :path: category
+    - :path: category.coding
+    - :path: category.coding.system
+      :fixed_value: http://terminology.hl7.org/CodeSystem/observation-category
+    - :path: category.coding.code
+      :fixed_value: vital-signs
+    - :path: code
+    - :path: subject
+      :types:
+      - Reference
+    - :path: effective[x]
+    - :path: value[x]
+    - :path: value[x].value
+    - :path: value[x].unit
+    - :path: value[x].system
+      :fixed_value: http://unitsofmeasure.org
+    - :path: value[x].code
+  :mandatory_elements:
+  - Observation.status
+  - Observation.category
+  - Observation.category.coding
+  - Observation.category.coding.system
+  - Observation.category.coding.code
+  - Observation.code
+  - Observation.code.coding
+  - Observation.code.coding.system
+  - Observation.code.coding.code
+  - Observation.subject
+  - Observation.effective[x]
+  - Observation.value[x].value
+  - Observation.value[x].unit
+  - Observation.value[x].system
+  - Observation.value[x].code
+  - Observation.component.code
+  :bindings:
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/observation-status
+    :path: status
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/quantity-comparator
+    :path: value.comparator
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/ucum-bodylength
+    :path: value.code
+  - :type: Quantity
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/ucum-vitals-common
+    :path: component.value
+  :references:
+  - :path: Observation.basedOn
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/CarePlan
+    - http://hl7.org/fhir/StructureDefinition/DeviceRequest
+    - http://hl7.org/fhir/StructureDefinition/ImmunizationRecommendation
+    - http://hl7.org/fhir/StructureDefinition/MedicationRequest
+    - http://hl7.org/fhir/StructureDefinition/NutritionOrder
+    - http://hl7.org/fhir/StructureDefinition/ServiceRequest
+  - :path: Observation.partOf
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/MedicationAdministration
+    - http://hl7.org/fhir/StructureDefinition/MedicationDispense
+    - http://hl7.org/fhir/StructureDefinition/MedicationStatement
+    - http://hl7.org/fhir/StructureDefinition/Procedure
+    - http://hl7.org/fhir/StructureDefinition/Immunization
+    - http://hl7.org/fhir/StructureDefinition/ImagingStudy
+  - :path: Observation.subject
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Patient
+  - :path: Observation.focus
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Resource
+  - :path: Observation.encounter
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Encounter
+  - :path: Observation.performer
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Practitioner
+    - http://hl7.org/fhir/StructureDefinition/PractitionerRole
+    - http://hl7.org/fhir/StructureDefinition/Organization
+    - http://hl7.org/fhir/StructureDefinition/CareTeam
+    - http://hl7.org/fhir/StructureDefinition/Patient
+    - http://hl7.org/fhir/StructureDefinition/RelatedPerson
+  - :path: Observation.specimen
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Specimen
+  - :path: Observation.device
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Device
+    - http://hl7.org/fhir/StructureDefinition/DeviceMetric
+  - :path: Observation.hasMember
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse
+    - http://hl7.org/fhir/StructureDefinition/MolecularSequence
+    - http://hl7.org/fhir/StructureDefinition/vitalsigns
+  - :path: Observation.derivedFrom
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/DocumentReference
+    - http://hl7.org/fhir/StructureDefinition/ImagingStudy
+    - http://hl7.org/fhir/StructureDefinition/Media
+    - http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse
+    - http://hl7.org/fhir/StructureDefinition/MolecularSequence
+    - http://hl7.org/fhir/StructureDefinition/vitalsigns
+  :delayed_references: []
+- :name: bodytemp
+  :class_name: BodytempSequence
+  :version: v3.1.1
+  :reformatted_version: v311
+  :resource: Observation
+  :profile_url: http://hl7.org/fhir/StructureDefinition/bodytemp
+  :profile_name: Observation Body Temperature Profile
+  :profile_version: 4.0.1
+  :title: Observation Body Temperature
+  :short_description: Verify support for the server capabilities required by the Observation
+    Body Temperature Profile.
+  :interactions:
+  - :code: create
+    :expectation: MAY
+  - :code: search-type
+    :expectation: SHALL
+  - :code: read
+    :expectation: SHALL
+  - :code: vread
+    :expectation: SHOULD
+  - :code: update
+    :expectation: MAY
+  - :code: patch
+    :expectation: MAY
+  - :code: delete
+    :expectation: MAY
+  - :code: history-instance
+    :expectation: SHOULD
+  - :code: history-type
+    :expectation: MAY
+  :operations: []
+  :searches:
+  - :expectation: SHALL
+    :names:
+    - patient
+    - code
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHALL
+    :names:
+    - patient
+    - category
+    - date
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - category
+    - status
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - code
+    - date
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHALL
+    :names:
+    - patient
+    - category
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  :search_definitions:
+    :patient:
+      :paths:
+      - subject
+      :full_paths:
+      - Observation.subject
+      :comparators: {}
+      :values: []
+      :type: Reference
+      :contains_multiple: false
+      :multiple_or: MAY
+    :category:
+      :paths:
+      - category
+      :full_paths:
+      - Observation.category
+      :comparators: {}
+      :values:
+      - vital-signs
+      :type: CodeableConcept
+      :contains_multiple: true
+      :multiple_or: MAY
+    :date:
+      :paths:
+      - effective
+      :full_paths:
+      - Observation.effective
+      :comparators:
+        :eq: MAY
+        :ne: MAY
+        :gt: SHALL
+        :ge: SHALL
+        :lt: SHALL
+        :le: SHALL
+        :sa: MAY
+        :eb: MAY
+        :ap: MAY
+      :values: []
+      :type: date
+      :contains_multiple: false
+      :multiple_or: MAY
+    :status:
+      :paths:
+      - status
+      :full_paths:
+      - Observation.status
+      :comparators: {}
+      :values:
+      - registered
+      - preliminary
+      - final
+      - amended
+      - corrected
+      - cancelled
+      - entered-in-error
+      - unknown
+      :type: code
+      :contains_multiple: false
+      :multiple_or: SHALL
+    :code:
+      :paths:
+      - code
+      :full_paths:
+      - Observation.code
+      :comparators: {}
+      :values:
+      - 8310-5
+      :type: CodeableConcept
+      :contains_multiple: false
+      :multiple_or: SHOULD
+  :include_params: *3
+  :revincludes: *4
+  :required_concepts: []
+  :must_supports:
+    :extensions: []
+    :slices:
+    - :name: Observation.value[x]:valueQuantity
+      :path: value[x]
+      :discriminator:
+        :type: type
+        :code: Quantity
+    - :name: Observation.category:VSCat
+      :path: category
+      :discriminator:
+        :type: value
+        :values:
+        - :path: coding.code
+          :value: vital-signs
+        - :path: coding.system
+          :value: http://terminology.hl7.org/CodeSystem/observation-category
+    :elements:
+    - :path: status
+    - :path: category
+    - :path: category.coding
+    - :path: category.coding.system
+      :fixed_value: http://terminology.hl7.org/CodeSystem/observation-category
+    - :path: category.coding.code
+      :fixed_value: vital-signs
+    - :path: code
+    - :path: subject
+      :types:
+      - Reference
+    - :path: effective[x]
+    - :path: value[x]
+    - :path: value[x].value
+    - :path: value[x].unit
+    - :path: value[x].system
+      :fixed_value: http://unitsofmeasure.org
+    - :path: value[x].code
+  :mandatory_elements:
+  - Observation.status
+  - Observation.category
+  - Observation.category.coding
+  - Observation.category.coding.system
+  - Observation.category.coding.code
+  - Observation.code
+  - Observation.code.coding
+  - Observation.code.coding.system
+  - Observation.code.coding.code
+  - Observation.subject
+  - Observation.effective[x]
+  - Observation.value[x].value
+  - Observation.value[x].unit
+  - Observation.value[x].system
+  - Observation.value[x].code
+  - Observation.component.code
+  :bindings:
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/observation-status
+    :path: status
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/quantity-comparator
+    :path: value.comparator
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/ucum-bodytemp
+    :path: value.code
+  - :type: Quantity
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/ucum-vitals-common
+    :path: component.value
+  :references:
+  - :path: Observation.basedOn
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/CarePlan
+    - http://hl7.org/fhir/StructureDefinition/DeviceRequest
+    - http://hl7.org/fhir/StructureDefinition/ImmunizationRecommendation
+    - http://hl7.org/fhir/StructureDefinition/MedicationRequest
+    - http://hl7.org/fhir/StructureDefinition/NutritionOrder
+    - http://hl7.org/fhir/StructureDefinition/ServiceRequest
+  - :path: Observation.partOf
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/MedicationAdministration
+    - http://hl7.org/fhir/StructureDefinition/MedicationDispense
+    - http://hl7.org/fhir/StructureDefinition/MedicationStatement
+    - http://hl7.org/fhir/StructureDefinition/Procedure
+    - http://hl7.org/fhir/StructureDefinition/Immunization
+    - http://hl7.org/fhir/StructureDefinition/ImagingStudy
+  - :path: Observation.subject
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Patient
+  - :path: Observation.focus
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Resource
+  - :path: Observation.encounter
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Encounter
+  - :path: Observation.performer
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Practitioner
+    - http://hl7.org/fhir/StructureDefinition/PractitionerRole
+    - http://hl7.org/fhir/StructureDefinition/Organization
+    - http://hl7.org/fhir/StructureDefinition/CareTeam
+    - http://hl7.org/fhir/StructureDefinition/Patient
+    - http://hl7.org/fhir/StructureDefinition/RelatedPerson
+  - :path: Observation.specimen
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Specimen
+  - :path: Observation.device
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Device
+    - http://hl7.org/fhir/StructureDefinition/DeviceMetric
+  - :path: Observation.hasMember
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse
+    - http://hl7.org/fhir/StructureDefinition/MolecularSequence
+    - http://hl7.org/fhir/StructureDefinition/vitalsigns
+  - :path: Observation.derivedFrom
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/DocumentReference
+    - http://hl7.org/fhir/StructureDefinition/ImagingStudy
+    - http://hl7.org/fhir/StructureDefinition/Media
+    - http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse
+    - http://hl7.org/fhir/StructureDefinition/MolecularSequence
+    - http://hl7.org/fhir/StructureDefinition/vitalsigns
+  :delayed_references: []
+- :name: bp
+  :class_name: BpSequence
+  :version: v3.1.1
+  :reformatted_version: v311
+  :resource: Observation
+  :profile_url: http://hl7.org/fhir/StructureDefinition/bp
+  :profile_name: Observation Blood Pressure Profile
+  :profile_version: 4.0.1
+  :title: Observation Blood Pressure
+  :short_description: Verify support for the server capabilities required by the Observation
+    Blood Pressure Profile.
+  :interactions:
+  - :code: create
+    :expectation: MAY
+  - :code: search-type
+    :expectation: SHALL
+  - :code: read
+    :expectation: SHALL
+  - :code: vread
+    :expectation: SHOULD
+  - :code: update
+    :expectation: MAY
+  - :code: patch
+    :expectation: MAY
+  - :code: delete
+    :expectation: MAY
+  - :code: history-instance
+    :expectation: SHOULD
+  - :code: history-type
+    :expectation: MAY
+  :operations: []
+  :searches:
+  - :expectation: SHALL
+    :names:
+    - patient
+    - code
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHALL
+    :names:
+    - patient
+    - category
+    - date
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - category
+    - status
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - code
+    - date
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHALL
+    :names:
+    - patient
+    - category
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  :search_definitions:
+    :patient:
+      :paths:
+      - subject
+      :full_paths:
+      - Observation.subject
+      :comparators: {}
+      :values: []
+      :type: Reference
+      :contains_multiple: false
+      :multiple_or: MAY
+    :category:
+      :paths:
+      - category
+      :full_paths:
+      - Observation.category
+      :comparators: {}
+      :values:
+      - vital-signs
+      :type: CodeableConcept
+      :contains_multiple: true
+      :multiple_or: MAY
+    :date:
+      :paths:
+      - effective
+      :full_paths:
+      - Observation.effective
+      :comparators:
+        :eq: MAY
+        :ne: MAY
+        :gt: SHALL
+        :ge: SHALL
+        :lt: SHALL
+        :le: SHALL
+        :sa: MAY
+        :eb: MAY
+        :ap: MAY
+      :values: []
+      :type: date
+      :contains_multiple: false
+      :multiple_or: MAY
+    :status:
+      :paths:
+      - status
+      :full_paths:
+      - Observation.status
+      :comparators: {}
+      :values:
+      - registered
+      - preliminary
+      - final
+      - amended
+      - corrected
+      - cancelled
+      - entered-in-error
+      - unknown
+      :type: code
+      :contains_multiple: false
+      :multiple_or: SHALL
+    :code:
+      :paths:
+      - code
+      :full_paths:
+      - Observation.code
+      :comparators: {}
+      :values:
+      - 85354-9
+      :type: CodeableConcept
+      :contains_multiple: false
+      :multiple_or: SHOULD
+  :include_params: *3
+  :revincludes: *4
+  :required_concepts: []
+  :must_supports:
+    :extensions: []
+    :slices:
+    - :name: Observation.category:VSCat
+      :path: category
+      :discriminator:
+        :type: value
+        :values:
+        - :path: coding.code
+          :value: vital-signs
+        - :path: coding.system
+          :value: http://terminology.hl7.org/CodeSystem/observation-category
+    - :name: Observation.component:SystolicBP
+      :path: component
+      :discriminator:
+        :type: value
+        :values:
+        - :path: code.coding.code
+          :value: 8480-6
+        - :path: code.coding.system
+          :value: http://loinc.org
+    - :name: Observation.component:DiastolicBP
+      :path: component
+      :discriminator:
+        :type: value
+        :values:
+        - :path: code.coding.code
+          :value: 8462-4
+        - :path: code.coding.system
+          :value: http://loinc.org
+    :elements:
+    - :path: status
+    - :path: category
+    - :path: category.coding
+    - :path: category.coding.system
+      :fixed_value: http://terminology.hl7.org/CodeSystem/observation-category
+    - :path: category.coding.code
+      :fixed_value: vital-signs
+    - :path: code
+    - :path: subject
+      :types:
+      - Reference
+    - :path: effective[x]
+    - :path: component
+    - :path: component.value[x].system
+      :fixed_value: http://unitsofmeasure.org
+    - :path: component.value[x].code
+      :fixed_value: mm[Hg]
+    - :path: component.code
+    - :path: component.value[x]
+    - :path: component.value[x].value
+    - :path: component.value[x].unit
+  :mandatory_elements:
+  - Observation.status
+  - Observation.category
+  - Observation.category.coding
+  - Observation.category.coding.system
+  - Observation.category.coding.code
+  - Observation.code
+  - Observation.code.coding
+  - Observation.code.coding.system
+  - Observation.code.coding.code
+  - Observation.subject
+  - Observation.effective[x]
+  - Observation.component
+  - Observation.component.code
+  - Observation.component.code.coding
+  - Observation.component.code.coding.system
+  - Observation.component.code.coding.code
+  - Observation.component.value[x].value
+  - Observation.component.value[x].unit
+  - Observation.component.value[x].system
+  - Observation.component.value[x].code
+  :bindings:
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/observation-status
+    :path: status
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/quantity-comparator
+    :path: component.value.comparator
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/quantity-comparator
+    :path: component.value.comparator
+  :references:
+  - :path: Observation.basedOn
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/CarePlan
+    - http://hl7.org/fhir/StructureDefinition/DeviceRequest
+    - http://hl7.org/fhir/StructureDefinition/ImmunizationRecommendation
+    - http://hl7.org/fhir/StructureDefinition/MedicationRequest
+    - http://hl7.org/fhir/StructureDefinition/NutritionOrder
+    - http://hl7.org/fhir/StructureDefinition/ServiceRequest
+  - :path: Observation.partOf
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/MedicationAdministration
+    - http://hl7.org/fhir/StructureDefinition/MedicationDispense
+    - http://hl7.org/fhir/StructureDefinition/MedicationStatement
+    - http://hl7.org/fhir/StructureDefinition/Procedure
+    - http://hl7.org/fhir/StructureDefinition/Immunization
+    - http://hl7.org/fhir/StructureDefinition/ImagingStudy
+  - :path: Observation.subject
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Patient
+  - :path: Observation.focus
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Resource
+  - :path: Observation.encounter
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Encounter
+  - :path: Observation.performer
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Practitioner
+    - http://hl7.org/fhir/StructureDefinition/PractitionerRole
+    - http://hl7.org/fhir/StructureDefinition/Organization
+    - http://hl7.org/fhir/StructureDefinition/CareTeam
+    - http://hl7.org/fhir/StructureDefinition/Patient
+    - http://hl7.org/fhir/StructureDefinition/RelatedPerson
+  - :path: Observation.specimen
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Specimen
+  - :path: Observation.device
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Device
+    - http://hl7.org/fhir/StructureDefinition/DeviceMetric
+  - :path: Observation.hasMember
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse
+    - http://hl7.org/fhir/StructureDefinition/MolecularSequence
+    - http://hl7.org/fhir/StructureDefinition/vitalsigns
+  - :path: Observation.derivedFrom
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/DocumentReference
+    - http://hl7.org/fhir/StructureDefinition/ImagingStudy
+    - http://hl7.org/fhir/StructureDefinition/Media
+    - http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse
+    - http://hl7.org/fhir/StructureDefinition/MolecularSequence
+    - http://hl7.org/fhir/StructureDefinition/vitalsigns
+  :delayed_references: []
+- :name: bodyweight
+  :class_name: BodyweightSequence
+  :version: v3.1.1
+  :reformatted_version: v311
+  :resource: Observation
+  :profile_url: http://hl7.org/fhir/StructureDefinition/bodyweight
+  :profile_name: Observation Body Weight Profile
+  :profile_version: 4.0.1
+  :title: Observation Body Weight
+  :short_description: Verify support for the server capabilities required by the Observation
+    Body Weight Profile.
+  :interactions:
+  - :code: create
+    :expectation: MAY
+  - :code: search-type
+    :expectation: SHALL
+  - :code: read
+    :expectation: SHALL
+  - :code: vread
+    :expectation: SHOULD
+  - :code: update
+    :expectation: MAY
+  - :code: patch
+    :expectation: MAY
+  - :code: delete
+    :expectation: MAY
+  - :code: history-instance
+    :expectation: SHOULD
+  - :code: history-type
+    :expectation: MAY
+  :operations: []
+  :searches:
+  - :expectation: SHALL
+    :names:
+    - patient
+    - code
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHALL
+    :names:
+    - patient
+    - category
+    - date
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - category
+    - status
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - code
+    - date
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHALL
+    :names:
+    - patient
+    - category
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  :search_definitions:
+    :patient:
+      :paths:
+      - subject
+      :full_paths:
+      - Observation.subject
+      :comparators: {}
+      :values: []
+      :type: Reference
+      :contains_multiple: false
+      :multiple_or: MAY
+    :category:
+      :paths:
+      - category
+      :full_paths:
+      - Observation.category
+      :comparators: {}
+      :values:
+      - vital-signs
+      :type: CodeableConcept
+      :contains_multiple: true
+      :multiple_or: MAY
+    :date:
+      :paths:
+      - effective
+      :full_paths:
+      - Observation.effective
+      :comparators:
+        :eq: MAY
+        :ne: MAY
+        :gt: SHALL
+        :ge: SHALL
+        :lt: SHALL
+        :le: SHALL
+        :sa: MAY
+        :eb: MAY
+        :ap: MAY
+      :values: []
+      :type: date
+      :contains_multiple: false
+      :multiple_or: MAY
+    :status:
+      :paths:
+      - status
+      :full_paths:
+      - Observation.status
+      :comparators: {}
+      :values:
+      - registered
+      - preliminary
+      - final
+      - amended
+      - corrected
+      - cancelled
+      - entered-in-error
+      - unknown
+      :type: code
+      :contains_multiple: false
+      :multiple_or: SHALL
+    :code:
+      :paths:
+      - code
+      :full_paths:
+      - Observation.code
+      :comparators: {}
+      :values:
+      - 29463-7
+      :type: CodeableConcept
+      :contains_multiple: false
+      :multiple_or: SHOULD
+  :include_params: *3
+  :revincludes: *4
+  :required_concepts: []
+  :must_supports:
+    :extensions: []
+    :slices:
+    - :name: Observation.value[x]:valueQuantity
+      :path: value[x]
+      :discriminator:
+        :type: type
+        :code: Quantity
+    - :name: Observation.category:VSCat
+      :path: category
+      :discriminator:
+        :type: value
+        :values:
+        - :path: coding.code
+          :value: vital-signs
+        - :path: coding.system
+          :value: http://terminology.hl7.org/CodeSystem/observation-category
+    :elements:
+    - :path: status
+    - :path: category
+    - :path: category.coding
+    - :path: category.coding.system
+      :fixed_value: http://terminology.hl7.org/CodeSystem/observation-category
+    - :path: category.coding.code
+      :fixed_value: vital-signs
+    - :path: code
+    - :path: subject
+      :types:
+      - Reference
+    - :path: effective[x]
+    - :path: value[x]
+    - :path: value[x].value
+    - :path: value[x].unit
+    - :path: value[x].system
+      :fixed_value: http://unitsofmeasure.org
+    - :path: value[x].code
+  :mandatory_elements:
+  - Observation.status
+  - Observation.category
+  - Observation.category.coding
+  - Observation.category.coding.system
+  - Observation.category.coding.code
+  - Observation.code
+  - Observation.code.coding
+  - Observation.code.coding.system
+  - Observation.code.coding.code
+  - Observation.subject
+  - Observation.effective[x]
+  - Observation.value[x].value
+  - Observation.value[x].unit
+  - Observation.value[x].system
+  - Observation.value[x].code
+  - Observation.component.code
+  :bindings:
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/observation-status
+    :path: status
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/quantity-comparator
+    :path: value.comparator
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/ucum-bodyweight
+    :path: value.code
+  - :type: Quantity
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/ucum-vitals-common
+    :path: component.value
+  :references:
+  - :path: Observation.basedOn
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/CarePlan
+    - http://hl7.org/fhir/StructureDefinition/DeviceRequest
+    - http://hl7.org/fhir/StructureDefinition/ImmunizationRecommendation
+    - http://hl7.org/fhir/StructureDefinition/MedicationRequest
+    - http://hl7.org/fhir/StructureDefinition/NutritionOrder
+    - http://hl7.org/fhir/StructureDefinition/ServiceRequest
+  - :path: Observation.partOf
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/MedicationAdministration
+    - http://hl7.org/fhir/StructureDefinition/MedicationDispense
+    - http://hl7.org/fhir/StructureDefinition/MedicationStatement
+    - http://hl7.org/fhir/StructureDefinition/Procedure
+    - http://hl7.org/fhir/StructureDefinition/Immunization
+    - http://hl7.org/fhir/StructureDefinition/ImagingStudy
+  - :path: Observation.subject
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Patient
+  - :path: Observation.focus
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Resource
+  - :path: Observation.encounter
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Encounter
+  - :path: Observation.performer
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Practitioner
+    - http://hl7.org/fhir/StructureDefinition/PractitionerRole
+    - http://hl7.org/fhir/StructureDefinition/Organization
+    - http://hl7.org/fhir/StructureDefinition/CareTeam
+    - http://hl7.org/fhir/StructureDefinition/Patient
+    - http://hl7.org/fhir/StructureDefinition/RelatedPerson
+  - :path: Observation.specimen
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Specimen
+  - :path: Observation.device
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Device
+    - http://hl7.org/fhir/StructureDefinition/DeviceMetric
+  - :path: Observation.hasMember
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse
+    - http://hl7.org/fhir/StructureDefinition/MolecularSequence
+    - http://hl7.org/fhir/StructureDefinition/vitalsigns
+  - :path: Observation.derivedFrom
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/DocumentReference
+    - http://hl7.org/fhir/StructureDefinition/ImagingStudy
+    - http://hl7.org/fhir/StructureDefinition/Media
+    - http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse
+    - http://hl7.org/fhir/StructureDefinition/MolecularSequence
+    - http://hl7.org/fhir/StructureDefinition/vitalsigns
+  :delayed_references: []
+- :name: heartrate
+  :class_name: HeartrateSequence
+  :version: v3.1.1
+  :reformatted_version: v311
+  :resource: Observation
+  :profile_url: http://hl7.org/fhir/StructureDefinition/heartrate
+  :profile_name: Observation Heart Rate Profile
+  :profile_version: 4.0.1
+  :title: Observation Heart Rate
+  :short_description: Verify support for the server capabilities required by the Observation
+    Heart Rate Profile.
+  :interactions:
+  - :code: create
+    :expectation: MAY
+  - :code: search-type
+    :expectation: SHALL
+  - :code: read
+    :expectation: SHALL
+  - :code: vread
+    :expectation: SHOULD
+  - :code: update
+    :expectation: MAY
+  - :code: patch
+    :expectation: MAY
+  - :code: delete
+    :expectation: MAY
+  - :code: history-instance
+    :expectation: SHOULD
+  - :code: history-type
+    :expectation: MAY
+  :operations: []
+  :searches:
+  - :expectation: SHALL
+    :names:
+    - patient
+    - code
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHALL
+    :names:
+    - patient
+    - category
+    - date
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - category
+    - status
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - code
+    - date
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHALL
+    :names:
+    - patient
+    - category
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  :search_definitions:
+    :patient:
+      :paths:
+      - subject
+      :full_paths:
+      - Observation.subject
+      :comparators: {}
+      :values: []
+      :type: Reference
+      :contains_multiple: false
+      :multiple_or: MAY
+    :category:
+      :paths:
+      - category
+      :full_paths:
+      - Observation.category
+      :comparators: {}
+      :values:
+      - vital-signs
+      :type: CodeableConcept
+      :contains_multiple: true
+      :multiple_or: MAY
+    :date:
+      :paths:
+      - effective
+      :full_paths:
+      - Observation.effective
+      :comparators:
+        :eq: MAY
+        :ne: MAY
+        :gt: SHALL
+        :ge: SHALL
+        :lt: SHALL
+        :le: SHALL
+        :sa: MAY
+        :eb: MAY
+        :ap: MAY
+      :values: []
+      :type: date
+      :contains_multiple: false
+      :multiple_or: MAY
+    :status:
+      :paths:
+      - status
+      :full_paths:
+      - Observation.status
+      :comparators: {}
+      :values:
+      - registered
+      - preliminary
+      - final
+      - amended
+      - corrected
+      - cancelled
+      - entered-in-error
+      - unknown
+      :type: code
+      :contains_multiple: false
+      :multiple_or: SHALL
+    :code:
+      :paths:
+      - code
+      :full_paths:
+      - Observation.code
+      :comparators: {}
+      :values:
+      - 8867-4
+      :type: CodeableConcept
+      :contains_multiple: false
+      :multiple_or: SHOULD
+  :include_params: *3
+  :revincludes: *4
+  :required_concepts: []
+  :must_supports:
+    :extensions: []
+    :slices:
+    - :name: Observation.value[x]:valueQuantity
+      :path: value[x]
+      :discriminator:
+        :type: type
+        :code: Quantity
+    - :name: Observation.category:VSCat
+      :path: category
+      :discriminator:
+        :type: value
+        :values:
+        - :path: coding.code
+          :value: vital-signs
+        - :path: coding.system
+          :value: http://terminology.hl7.org/CodeSystem/observation-category
+    :elements:
+    - :path: status
+    - :path: category
+    - :path: category.coding
+    - :path: category.coding.system
+      :fixed_value: http://terminology.hl7.org/CodeSystem/observation-category
+    - :path: category.coding.code
+      :fixed_value: vital-signs
+    - :path: code
+    - :path: subject
+      :types:
+      - Reference
+    - :path: effective[x]
+    - :path: value[x]
+    - :path: value[x].value
+    - :path: value[x].unit
+    - :path: value[x].system
+      :fixed_value: http://unitsofmeasure.org
+    - :path: value[x].code
+      :fixed_value: "/min"
+  :mandatory_elements:
+  - Observation.status
+  - Observation.category
+  - Observation.category.coding
+  - Observation.category.coding.system
+  - Observation.category.coding.code
+  - Observation.code
+  - Observation.code.coding
+  - Observation.code.coding.system
+  - Observation.code.coding.code
+  - Observation.subject
+  - Observation.effective[x]
+  - Observation.value[x].value
+  - Observation.value[x].unit
+  - Observation.value[x].system
+  - Observation.value[x].code
+  - Observation.component.code
+  :bindings:
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/observation-status
+    :path: status
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/quantity-comparator
+    :path: value.comparator
+  - :type: Quantity
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/ucum-vitals-common
+    :path: component.value
+  :references:
+  - :path: Observation.basedOn
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/CarePlan
+    - http://hl7.org/fhir/StructureDefinition/DeviceRequest
+    - http://hl7.org/fhir/StructureDefinition/ImmunizationRecommendation
+    - http://hl7.org/fhir/StructureDefinition/MedicationRequest
+    - http://hl7.org/fhir/StructureDefinition/NutritionOrder
+    - http://hl7.org/fhir/StructureDefinition/ServiceRequest
+  - :path: Observation.partOf
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/MedicationAdministration
+    - http://hl7.org/fhir/StructureDefinition/MedicationDispense
+    - http://hl7.org/fhir/StructureDefinition/MedicationStatement
+    - http://hl7.org/fhir/StructureDefinition/Procedure
+    - http://hl7.org/fhir/StructureDefinition/Immunization
+    - http://hl7.org/fhir/StructureDefinition/ImagingStudy
+  - :path: Observation.subject
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Patient
+  - :path: Observation.focus
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Resource
+  - :path: Observation.encounter
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Encounter
+  - :path: Observation.performer
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Practitioner
+    - http://hl7.org/fhir/StructureDefinition/PractitionerRole
+    - http://hl7.org/fhir/StructureDefinition/Organization
+    - http://hl7.org/fhir/StructureDefinition/CareTeam
+    - http://hl7.org/fhir/StructureDefinition/Patient
+    - http://hl7.org/fhir/StructureDefinition/RelatedPerson
+  - :path: Observation.specimen
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Specimen
+  - :path: Observation.device
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Device
+    - http://hl7.org/fhir/StructureDefinition/DeviceMetric
+  - :path: Observation.hasMember
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse
+    - http://hl7.org/fhir/StructureDefinition/MolecularSequence
+    - http://hl7.org/fhir/StructureDefinition/vitalsigns
+  - :path: Observation.derivedFrom
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/DocumentReference
+    - http://hl7.org/fhir/StructureDefinition/ImagingStudy
+    - http://hl7.org/fhir/StructureDefinition/Media
+    - http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse
+    - http://hl7.org/fhir/StructureDefinition/MolecularSequence
+    - http://hl7.org/fhir/StructureDefinition/vitalsigns
+  :delayed_references: []
+- :name: resprate
+  :class_name: ResprateSequence
+  :version: v3.1.1
+  :reformatted_version: v311
+  :resource: Observation
+  :profile_url: http://hl7.org/fhir/StructureDefinition/resprate
+  :profile_name: Observation Respiratory Rate Profile
+  :profile_version: 4.0.1
+  :title: Observation Respiratory Rate
+  :short_description: Verify support for the server capabilities required by the Observation
+    Respiratory Rate Profile.
+  :interactions:
+  - :code: create
+    :expectation: MAY
+  - :code: search-type
+    :expectation: SHALL
+  - :code: read
+    :expectation: SHALL
+  - :code: vread
+    :expectation: SHOULD
+  - :code: update
+    :expectation: MAY
+  - :code: patch
+    :expectation: MAY
+  - :code: delete
+    :expectation: MAY
+  - :code: history-instance
+    :expectation: SHOULD
+  - :code: history-type
+    :expectation: MAY
+  :operations: []
+  :searches:
+  - :expectation: SHALL
+    :names:
+    - patient
+    - code
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHALL
+    :names:
+    - patient
+    - category
+    - date
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - category
+    - status
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - code
+    - date
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHALL
+    :names:
+    - patient
+    - category
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  :search_definitions:
+    :patient:
+      :paths:
+      - subject
+      :full_paths:
+      - Observation.subject
+      :comparators: {}
+      :values: []
+      :type: Reference
+      :contains_multiple: false
+      :multiple_or: MAY
+    :category:
+      :paths:
+      - category
+      :full_paths:
+      - Observation.category
+      :comparators: {}
+      :values:
+      - vital-signs
+      :type: CodeableConcept
+      :contains_multiple: true
+      :multiple_or: MAY
+    :date:
+      :paths:
+      - effective
+      :full_paths:
+      - Observation.effective
+      :comparators:
+        :eq: MAY
+        :ne: MAY
+        :gt: SHALL
+        :ge: SHALL
+        :lt: SHALL
+        :le: SHALL
+        :sa: MAY
+        :eb: MAY
+        :ap: MAY
+      :values: []
+      :type: date
+      :contains_multiple: false
+      :multiple_or: MAY
+    :status:
+      :paths:
+      - status
+      :full_paths:
+      - Observation.status
+      :comparators: {}
+      :values:
+      - registered
+      - preliminary
+      - final
+      - amended
+      - corrected
+      - cancelled
+      - entered-in-error
+      - unknown
+      :type: code
+      :contains_multiple: false
+      :multiple_or: SHALL
+    :code:
+      :paths:
+      - code
+      :full_paths:
+      - Observation.code
+      :comparators: {}
+      :values:
+      - 9279-1
+      :type: CodeableConcept
+      :contains_multiple: false
+      :multiple_or: SHOULD
+  :include_params: *3
+  :revincludes: *4
+  :required_concepts: []
+  :must_supports:
+    :extensions: []
+    :slices:
+    - :name: Observation.value[x]:valueQuantity
+      :path: value[x]
+      :discriminator:
+        :type: type
+        :code: Quantity
+    - :name: Observation.category:VSCat
+      :path: category
+      :discriminator:
+        :type: value
+        :values:
+        - :path: coding.code
+          :value: vital-signs
+        - :path: coding.system
+          :value: http://terminology.hl7.org/CodeSystem/observation-category
+    :elements:
+    - :path: status
+    - :path: category
+    - :path: category.coding
+    - :path: category.coding.system
+      :fixed_value: http://terminology.hl7.org/CodeSystem/observation-category
+    - :path: category.coding.code
+      :fixed_value: vital-signs
+    - :path: code
+    - :path: subject
+      :types:
+      - Reference
+    - :path: effective[x]
+    - :path: value[x]
+    - :path: value[x].value
+    - :path: value[x].unit
+    - :path: value[x].system
+      :fixed_value: http://unitsofmeasure.org
+    - :path: value[x].code
+      :fixed_value: "/min"
+  :mandatory_elements:
+  - Observation.status
+  - Observation.category
+  - Observation.category.coding
+  - Observation.category.coding.system
+  - Observation.category.coding.code
+  - Observation.code
+  - Observation.code.coding
+  - Observation.code.coding.system
+  - Observation.code.coding.code
+  - Observation.subject
+  - Observation.effective[x]
+  - Observation.value[x].value
+  - Observation.value[x].unit
+  - Observation.value[x].system
+  - Observation.value[x].code
+  - Observation.component.code
+  :bindings:
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/observation-status
+    :path: status
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/quantity-comparator
+    :path: value.comparator
+  - :type: Quantity
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/ucum-vitals-common
+    :path: component.value
+  :references:
+  - :path: Observation.basedOn
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/CarePlan
+    - http://hl7.org/fhir/StructureDefinition/DeviceRequest
+    - http://hl7.org/fhir/StructureDefinition/ImmunizationRecommendation
+    - http://hl7.org/fhir/StructureDefinition/MedicationRequest
+    - http://hl7.org/fhir/StructureDefinition/NutritionOrder
+    - http://hl7.org/fhir/StructureDefinition/ServiceRequest
+  - :path: Observation.partOf
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/MedicationAdministration
+    - http://hl7.org/fhir/StructureDefinition/MedicationDispense
+    - http://hl7.org/fhir/StructureDefinition/MedicationStatement
+    - http://hl7.org/fhir/StructureDefinition/Procedure
+    - http://hl7.org/fhir/StructureDefinition/Immunization
+    - http://hl7.org/fhir/StructureDefinition/ImagingStudy
+  - :path: Observation.subject
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Patient
+  - :path: Observation.focus
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Resource
+  - :path: Observation.encounter
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Encounter
+  - :path: Observation.performer
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Practitioner
+    - http://hl7.org/fhir/StructureDefinition/PractitionerRole
+    - http://hl7.org/fhir/StructureDefinition/Organization
+    - http://hl7.org/fhir/StructureDefinition/CareTeam
+    - http://hl7.org/fhir/StructureDefinition/Patient
+    - http://hl7.org/fhir/StructureDefinition/RelatedPerson
+  - :path: Observation.specimen
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Specimen
+  - :path: Observation.device
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Device
+    - http://hl7.org/fhir/StructureDefinition/DeviceMetric
+  - :path: Observation.hasMember
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse
+    - http://hl7.org/fhir/StructureDefinition/MolecularSequence
+    - http://hl7.org/fhir/StructureDefinition/vitalsigns
+  - :path: Observation.derivedFrom
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/DocumentReference
+    - http://hl7.org/fhir/StructureDefinition/ImagingStudy
+    - http://hl7.org/fhir/StructureDefinition/Media
+    - http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse
+    - http://hl7.org/fhir/StructureDefinition/MolecularSequence
+    - http://hl7.org/fhir/StructureDefinition/vitalsigns
+  :delayed_references: []
+- :name: us_core_organization
+  :class_name: USCorev311OrganizationSequence
+  :version: v3.1.1
+  :reformatted_version: v311
+  :resource: Organization
+  :profile_url: http://hl7.org/fhir/us/core/StructureDefinition/us-core-organization
+  :profile_name: US Core Organization Profile
+  :profile_version: 3.1.1
+  :title: Organization
+  :short_description: Verify support for the server capabilities required by the US
+    Core Organization Profile.
+  :interactions:
+  - :code: create
+    :expectation: MAY
+  - :code: search-type
+    :expectation: SHALL
+  - :code: read
+    :expectation: SHALL
+  - :code: vread
+    :expectation: SHOULD
+  - :code: update
+    :expectation: MAY
+  - :code: patch
+    :expectation: MAY
+  - :code: delete
+    :expectation: MAY
+  - :code: history-instance
+    :expectation: SHOULD
+  - :code: history-type
+    :expectation: MAY
+  :operations: []
+  :searches:
+  - :names:
+    - name
+    :expectation: SHALL
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :names:
+    - address
+    :expectation: SHALL
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  :search_definitions:
+    :name:
+      :paths:
+      - name
+      :full_paths:
+      - Organization.name
+      :comparators: {}
+      :values: []
+      :type: string
+      :contains_multiple: false
+      :multiple_or: MAY
+    :address:
+      :paths:
+      - address
+      :full_paths:
+      - Organization.address
+      :comparators: {}
+      :values: []
+      :type: Address
+      :contains_multiple: true
+      :multiple_or: MAY
+  :include_params: []
+  :revincludes: []
+  :required_concepts: []
+  :must_supports:
+    :extensions: []
+    :slices:
+    - :name: Organization.identifier:NPI
+      :path: identifier
+      :discriminator:
+        :type: patternIdentifier
+        :path: ''
+        :system: http://hl7.org/fhir/sid/us-npi
+    :elements:
+    - :path: identifier
+    - :path: identifier.system
+    - :path: identifier.value
+    - :path: active
+    - :path: name
+    - :path: telecom
+    - :path: address
+    - :path: address.line
+    - :path: address.city
+    - :path: address.state
+    - :path: address.postalCode
+    - :path: address.country
+  :mandatory_elements:
+  - Organization.active
+  - Organization.name
+  :bindings:
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/identifier-use
+    :path: identifier.use
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/address-use
+    :path: address.use
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/address-type
+    :path: address.type
+  :references:
+  - :path: Organization.identifier.assigner
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Organization
+  - :path: Organization.partOf
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Organization
+  - :path: Organization.endpoint
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Endpoint
+  :delayed_references: []
+- :name: us_core_patient
+  :class_name: USCorev311PatientSequence
+  :version: v3.1.1
+  :reformatted_version: v311
+  :resource: Patient
+  :profile_url: http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
+  :profile_name: US Core Patient Profile
+  :profile_version: 3.1.1
+  :title: Patient
+  :short_description: Verify support for the server capabilities required by the US
+    Core Patient Profile.
+  :interactions:
+  - :code: create
+    :expectation: MAY
+  - :code: search-type
+    :expectation: SHALL
+  - :code: read
+    :expectation: SHALL
+  - :code: vread
+    :expectation: SHOULD
+  - :code: update
+    :expectation: MAY
+  - :code: patch
+    :expectation: MAY
+  - :code: delete
+    :expectation: MAY
+  - :code: history-instance
+    :expectation: SHOULD
+  - :code: history-type
+    :expectation: MAY
+  :operations: []
+  :searches:
+  - :names:
+    - _id
+    :expectation: SHALL
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :names:
+    - identifier
+    :expectation: SHALL
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :names:
+    - name
+    :expectation: SHALL
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - birthdate
+    - family
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - family
+    - gender
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHALL
+    :names:
+    - birthdate
+    - name
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHALL
+    :names:
+    - gender
+    - name
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  :search_definitions:
+    :_id:
+      :paths:
+      - id
+      :full_paths:
+      - Patient.id
+      :comparators: {}
+      :values: []
+      :type: http://hl7.org/fhirpath/System.String
+      :contains_multiple: false
+      :multiple_or: MAY
+    :identifier:
+      :paths:
+      - identifier
+      :full_paths:
+      - Patient.identifier
+      :comparators: {}
+      :values: []
+      :type: Identifier
+      :contains_multiple: true
+      :multiple_or: MAY
+    :name:
+      :paths:
+      - name
+      :full_paths:
+      - Patient.name
+      :comparators: {}
+      :values: []
+      :type: HumanName
+      :contains_multiple: true
+      :multiple_or: MAY
+    :birthdate:
+      :paths:
+      - birthDate
+      :full_paths:
+      - Patient.birthDate
+      :comparators:
+        :eq: MAY
+        :ne: MAY
+        :gt: MAY
+        :ge: MAY
+        :lt: MAY
+        :le: MAY
+        :sa: MAY
+        :eb: MAY
+        :ap: MAY
+      :values: []
+      :type: date
+      :contains_multiple: false
+      :multiple_or: MAY
+    :family:
+      :paths:
+      - name.family
+      :full_paths:
+      - Patient.name.family
+      :comparators: {}
+      :values: []
+      :type: string
+      :contains_multiple: false
+      :multiple_or: MAY
+    :gender:
+      :paths:
+      - gender
+      :full_paths:
+      - Patient.gender
+      :comparators: {}
+      :values: []
+      :type: code
+      :contains_multiple: false
+      :multiple_or: MAY
+  :include_params: []
+  :revincludes:
+  - Provenance:target
+  :required_concepts: []
+  :must_supports:
+    :extensions:
+    - :id: Patient.extension:race
+      :url: http://hl7.org/fhir/us/core/StructureDefinition/us-core-race
+    - :id: Patient.extension:ethnicity
+      :url: http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity
+    - :id: Patient.extension:birthsex
+      :url: http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex
+    :slices: []
+    :elements:
+    - :path: identifier
+    - :path: identifier.system
+    - :path: identifier.value
+    - :path: name
+    - :path: name.family
+    - :path: name.given
+    - :path: telecom
+    - :path: telecom.system
+    - :path: telecom.value
+    - :path: telecom.use
+    - :path: gender
+    - :path: birthDate
+    - :path: address
+    - :path: address.line
+    - :path: address.city
+    - :path: address.state
+    - :path: address.postalCode
+    - :path: address.period
+    - :path: communication
+    - :path: communication.language
+  :mandatory_elements:
+  - Patient.identifier
+  - Patient.identifier.system
+  - Patient.identifier.value
+  - Patient.name
+  - Patient.telecom.system
+  - Patient.telecom.value
+  - Patient.gender
+  - Patient.communication.language
+  - Patient.link.other
+  - Patient.link.type
+  :bindings:
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/identifier-use
+    :path: identifier.use
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/name-use
+    :path: name.use
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/contact-point-system
+    :path: telecom.system
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/contact-point-use
+    :path: telecom.use
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/administrative-gender
+    :path: gender
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/address-use
+    :path: address.use
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/address-type
+    :path: address.type
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/administrative-gender
+    :path: contact.gender
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/link-type
+    :path: link.type
+  - :type: Coding
+    :strength: required
+    :system: http://hl7.org/fhir/us/core/ValueSet/omb-race-category
+    :path: value
+    :extensions:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-race
+    - ombCategory
+  - :type: Coding
+    :strength: required
+    :system: http://hl7.org/fhir/us/core/ValueSet/detailed-race
+    :path: value
+    :extensions:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-race
+    - detailed
+  - :type: Coding
+    :strength: required
+    :system: http://hl7.org/fhir/us/core/ValueSet/omb-ethnicity-category
+    :path: value
+    :extensions:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity
+    - ombCategory
+  - :type: Coding
+    :strength: required
+    :system: http://hl7.org/fhir/us/core/ValueSet/detailed-ethnicity
+    :path: value
+    :extensions:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity
+    - detailed
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/us/core/ValueSet/birthsex
+    :path: value
+    :extensions:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex
+  :references:
+  - :path: Patient.identifier.assigner
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Organization
+  - :path: Patient.contact.organization
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Organization
+  - :path: Patient.generalPractitioner
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Organization
+    - http://hl7.org/fhir/StructureDefinition/Practitioner
+    - http://hl7.org/fhir/StructureDefinition/PractitionerRole
+  - :path: Patient.managingOrganization
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Organization
+  - :path: Patient.link.other
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Patient
+    - http://hl7.org/fhir/StructureDefinition/RelatedPerson
+  :delayed_references: []
+- :name: us_core_practitioner
+  :class_name: USCorev311PractitionerSequence
+  :version: v3.1.1
+  :reformatted_version: v311
+  :resource: Practitioner
+  :profile_url: http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner
+  :profile_name: US Core Practitioner Profile
+  :profile_version: 3.1.1
+  :title: Practitioner
+  :short_description: Verify support for the server capabilities required by the US
+    Core Practitioner Profile.
+  :interactions:
+  - :code: create
+    :expectation: MAY
+  - :code: search-type
+    :expectation: SHALL
+  - :code: read
+    :expectation: SHALL
+  - :code: vread
+    :expectation: SHOULD
+  - :code: update
+    :expectation: MAY
+  - :code: patch
+    :expectation: MAY
+  - :code: delete
+    :expectation: MAY
+  - :code: history-instance
+    :expectation: SHOULD
+  - :code: history-type
+    :expectation: MAY
+  :operations: []
+  :searches:
+  - :names:
+    - name
+    :expectation: SHALL
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :names:
+    - identifier
+    :expectation: SHALL
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  :search_definitions:
+    :name:
+      :paths:
+      - name
+      :full_paths:
+      - Practitioner.name
+      :comparators: {}
+      :values: []
+      :type: HumanName
+      :contains_multiple: true
+      :multiple_or: MAY
+    :identifier:
+      :paths:
+      - identifier
+      :full_paths:
+      - Practitioner.identifier
+      :comparators: {}
+      :values: []
+      :type: Identifier
+      :contains_multiple: true
+      :multiple_or: MAY
+  :include_params: []
+  :revincludes: []
+  :required_concepts: []
+  :must_supports:
+    :extensions: []
+    :slices:
+    - :name: Practitioner.identifier:NPI
+      :path: identifier
+      :discriminator:
+        :type: patternIdentifier
+        :path: ''
+        :system: http://hl7.org/fhir/sid/us-npi
+    :elements:
+    - :path: identifier
+    - :path: identifier.system
+    - :path: identifier.value
+    - :path: name
+    - :path: name.family
+  :mandatory_elements:
+  - Practitioner.identifier
+  - Practitioner.identifier.system
+  - Practitioner.identifier.value
+  - Practitioner.name
+  - Practitioner.name.family
+  - Practitioner.qualification.code
+  :bindings:
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/identifier-use
+    :path: identifier.use
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/name-use
+    :path: name.use
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/administrative-gender
+    :path: gender
+  :references:
+  - :path: Practitioner.identifier.assigner
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Organization
+  - :path: Practitioner.qualification.issuer
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Organization
+  :delayed_references: []
+- :name: us_core_practitionerrole
+  :class_name: USCorev311PractitionerroleSequence
+  :version: v3.1.1
+  :reformatted_version: v311
+  :resource: PractitionerRole
+  :profile_url: http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitionerrole
+  :profile_name: US Core PractitionerRole Profile
+  :profile_version: 3.1.1
+  :title: PractitionerRole
+  :short_description: Verify support for the server capabilities required by the US
+    Core PractitionerRole Profile.
+  :interactions:
+  - :code: create
+    :expectation: MAY
+  - :code: search-type
+    :expectation: SHALL
+  - :code: read
+    :expectation: SHALL
+  - :code: vread
+    :expectation: SHOULD
+  - :code: update
+    :expectation: MAY
+  - :code: patch
+    :expectation: MAY
+  - :code: delete
+    :expectation: MAY
+  - :code: history-instance
+    :expectation: SHOULD
+  - :code: history-type
+    :expectation: MAY
+  :operations: []
+  :searches:
+  - :names:
+    - specialty
+    :expectation: SHALL
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :names:
+    - practitioner
+    :expectation: SHALL
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  :search_definitions:
+    :specialty:
+      :paths:
+      - specialty
+      :full_paths:
+      - PractitionerRole.specialty
+      :comparators: {}
+      :values: []
+      :type: CodeableConcept
+      :contains_multiple: true
+      :multiple_or: MAY
+    :practitioner:
+      :paths:
+      - practitioner
+      :full_paths:
+      - PractitionerRole.practitioner
+      :comparators: {}
+      :values: []
+      :type: Reference
+      :contains_multiple: false
+      :multiple_or: MAY
+      :chain:
+      - :chain: identifier
+        :expectation: SHALL
+      - :chain: name
+        :expectation: SHALL
+  :include_params:
+  - PractitionerRole:endpoint
+  - PractitionerRole:practitioner
+  :revincludes: []
+  :required_concepts: []
+  :must_supports:
+    :extensions: []
+    :slices: []
+    :elements:
+    - :path: practitioner
+      :types:
+      - Reference
+    - :path: organization
+      :types:
+      - Reference
+    - :path: code
+    - :path: specialty
+    - :path: location
+      :types:
+      - Reference
+    - :path: telecom
+    - :path: telecom.system
+    - :path: telecom.value
+    - :path: endpoint
+      :types:
+      - Reference
+  :mandatory_elements:
+  - PractitionerRole.practitioner
+  - PractitionerRole.organization
+  - PractitionerRole.telecom.system
+  - PractitionerRole.telecom.value
+  - PractitionerRole.notAvailable.description
+  :bindings:
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/contact-point-system
+    :path: telecom.system
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/contact-point-use
+    :path: telecom.use
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/days-of-week
+    :path: availableTime.daysOfWeek
+  :references:
+  - :path: PractitionerRole.practitioner
+    :profiles:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner
+  - :path: PractitionerRole.organization
+    :profiles:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-organization
+  - :path: PractitionerRole.location
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Location
+  - :path: PractitionerRole.healthcareService
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/HealthcareService
+  - :path: PractitionerRole.endpoint
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Endpoint
+  :delayed_references:
+  - :path: practitioner
+    :resources:
+    - Practitioner
+  - :path: organization
+    :resources:
+    - Organization
+- :name: us_core_procedure
+  :class_name: USCorev311ProcedureSequence
+  :version: v3.1.1
+  :reformatted_version: v311
+  :resource: Procedure
+  :profile_url: http://hl7.org/fhir/us/core/StructureDefinition/us-core-procedure
+  :profile_name: US Core Procedure Profile
+  :profile_version: 3.1.1
+  :title: Procedure
+  :short_description: Verify support for the server capabilities required by the US
+    Core Procedure Profile.
+  :interactions:
+  - :code: create
+    :expectation: MAY
+  - :code: search-type
+    :expectation: SHALL
+  - :code: read
+    :expectation: SHALL
+  - :code: vread
+    :expectation: SHOULD
+  - :code: update
+    :expectation: MAY
+  - :code: patch
+    :expectation: MAY
+  - :code: delete
+    :expectation: MAY
+  - :code: history-instance
+    :expectation: SHOULD
+  - :code: history-type
+    :expectation: MAY
+  :operations: []
+  :searches:
+  - :names:
+    - patient
+    :expectation: SHALL
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHALL
+    :names:
+    - patient
+    - date
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - status
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHOULD
+    :names:
+    - patient
+    - code
+    - date
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  :search_definitions:
+    :patient:
+      :paths:
+      - subject
+      :full_paths:
+      - Procedure.subject
+      :comparators: {}
+      :values: []
+      :type: Reference
+      :contains_multiple: false
+      :multiple_or: MAY
+    :date:
+      :paths:
+      - performed
+      :full_paths:
+      - Procedure.performed
+      :comparators:
+        :eq: MAY
+        :ne: MAY
+        :gt: SHALL
+        :ge: SHALL
+        :lt: SHALL
+        :le: SHALL
+        :sa: MAY
+        :eb: MAY
+        :ap: MAY
+      :values: []
+      :type: date
+      :contains_multiple: false
+      :multiple_or: MAY
+    :status:
+      :paths:
+      - status
+      :full_paths:
+      - Procedure.status
+      :comparators: {}
+      :values:
+      - preparation
+      - in-progress
+      - not-done
+      - on-hold
+      - stopped
+      - completed
+      - entered-in-error
+      - unknown
+      :type: code
+      :contains_multiple: false
+      :multiple_or: SHALL
+    :code:
+      :paths:
+      - code
+      :full_paths:
+      - Procedure.code
+      :comparators: {}
+      :values: []
+      :type: CodeableConcept
+      :contains_multiple: false
+      :multiple_or: SHOULD
+  :include_params: []
+  :revincludes:
+  - Provenance:target
+  :required_concepts: []
+  :must_supports:
+    :extensions: []
+    :slices: []
+    :elements:
+    - :path: status
+    - :path: code
+    - :path: subject
+      :types:
+      - Reference
+    - :path: performed[x]
+  :mandatory_elements:
+  - Procedure.status
+  - Procedure.code
+  - Procedure.subject
+  - Procedure.performed[x]
+  - Procedure.performer.actor
+  - Procedure.focalDevice.manipulated
+  :bindings:
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/event-status
+    :path: status
+  :references:
+  - :path: Procedure.basedOn
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/CarePlan
+    - http://hl7.org/fhir/StructureDefinition/ServiceRequest
+  - :path: Procedure.partOf
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Procedure
+    - http://hl7.org/fhir/StructureDefinition/Observation
+    - http://hl7.org/fhir/StructureDefinition/MedicationAdministration
+  - :path: Procedure.subject
+    :profiles:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
+  - :path: Procedure.encounter
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Encounter
+  - :path: Procedure.recorder
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Patient
+    - http://hl7.org/fhir/StructureDefinition/RelatedPerson
+    - http://hl7.org/fhir/StructureDefinition/Practitioner
+    - http://hl7.org/fhir/StructureDefinition/PractitionerRole
+  - :path: Procedure.asserter
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Patient
+    - http://hl7.org/fhir/StructureDefinition/RelatedPerson
+    - http://hl7.org/fhir/StructureDefinition/Practitioner
+    - http://hl7.org/fhir/StructureDefinition/PractitionerRole
+  - :path: Procedure.performer.actor
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Practitioner
+    - http://hl7.org/fhir/StructureDefinition/PractitionerRole
+    - http://hl7.org/fhir/StructureDefinition/Organization
+    - http://hl7.org/fhir/StructureDefinition/Patient
+    - http://hl7.org/fhir/StructureDefinition/RelatedPerson
+    - http://hl7.org/fhir/StructureDefinition/Device
+  - :path: Procedure.performer.onBehalfOf
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Organization
+  - :path: Procedure.location
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Location
+  - :path: Procedure.reasonReference
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Condition
+    - http://hl7.org/fhir/StructureDefinition/Observation
+    - http://hl7.org/fhir/StructureDefinition/Procedure
+    - http://hl7.org/fhir/StructureDefinition/DiagnosticReport
+    - http://hl7.org/fhir/StructureDefinition/DocumentReference
+  - :path: Procedure.report
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/DiagnosticReport
+    - http://hl7.org/fhir/StructureDefinition/DocumentReference
+    - http://hl7.org/fhir/StructureDefinition/Composition
+  - :path: Procedure.complicationDetail
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Condition
+  - :path: Procedure.focalDevice.manipulated
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Device
+  - :path: Procedure.usedReference
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Device
+    - http://hl7.org/fhir/StructureDefinition/Medication
+    - http://hl7.org/fhir/StructureDefinition/Substance
+  :delayed_references: []
+- :name: us_core_provenance
+  :class_name: USCorev311ProvenanceSequence
+  :version: v3.1.1
+  :reformatted_version: v311
+  :resource: Provenance
+  :profile_url: http://hl7.org/fhir/us/core/StructureDefinition/us-core-provenance
+  :profile_name: US Core Provenance Profile
+  :profile_version: 3.1.1
+  :title: Provenance
+  :short_description: Verify support for the server capabilities required by the US
+    Core Provenance Profile.
+  :interactions:
+  - :code: create
+    :expectation: MAY
+  - :code: search-type
+    :expectation: MAY
+  - :code: read
+    :expectation: SHALL
+  - :code: vread
+    :expectation: SHOULD
+  - :code: update
+    :expectation: MAY
+  - :code: patch
+    :expectation: MAY
+  - :code: delete
+    :expectation: MAY
+  - :code: history-instance
+    :expectation: SHOULD
+  - :code: history-type
+    :expectation: MAY
+  :operations: []
+  :searches: []
+  :search_definitions: {}
+  :include_params: []
+  :revincludes: []
+  :required_concepts: []
+  :must_supports:
+    :extensions: []
+    :slices:
+    - :name: Provenance.agent:ProvenanceAuthor
+      :path: agent
+      :discriminator:
+        :type: patternCodeableConcept
+        :path: type
+        :code: author
+        :system: http://terminology.hl7.org/CodeSystem/provenance-participant-type
+    - :name: Provenance.agent:ProvenanceTransmitter
+      :path: agent
+      :discriminator:
+        :type: patternCodeableConcept
+        :path: type
+        :code: transmitter
+        :system: http://hl7.org/fhir/us/core/CodeSystem/us-core-provenance-participant-type
+    :elements:
+    - :path: target
+      :types:
+      - Reference
+    - :path: recorded
+    - :path: agent
+    - :path: agent.type
+    - :path: agent.who
+      :types:
+      - Reference
+    - :path: agent.onBehalfOf
+      :types:
+      - Reference
+    - :path: agent.type.coding.code
+      :fixed_value: author
+    - :path: agent.type.coding.code
+      :fixed_value: transmitter
+  :mandatory_elements:
+  - Provenance.target
+  - Provenance.recorded
+  - Provenance.agent
+  - Provenance.agent.who
+  - Provenance.agent.type
+  - Provenance.entity.role
+  - Provenance.entity.what
+  :bindings:
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/provenance-entity-role
+    :path: entity.role
+  :references:
+  - :path: Provenance.target
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Resource
+  - :path: Provenance.location
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Location
+  - :path: Provenance.agent.who
+    :profiles:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-organization
+  - :path: Provenance.agent.onBehalfOf
+    :profiles:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-organization
+  - :path: Provenance.agent.who
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Practitioner
+    - http://hl7.org/fhir/StructureDefinition/PractitionerRole
+    - http://hl7.org/fhir/StructureDefinition/RelatedPerson
+    - http://hl7.org/fhir/StructureDefinition/Patient
+    - http://hl7.org/fhir/StructureDefinition/Device
+    - http://hl7.org/fhir/StructureDefinition/Organization
+  - :path: Provenance.agent.onBehalfOf
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Practitioner
+    - http://hl7.org/fhir/StructureDefinition/PractitionerRole
+    - http://hl7.org/fhir/StructureDefinition/RelatedPerson
+    - http://hl7.org/fhir/StructureDefinition/Patient
+    - http://hl7.org/fhir/StructureDefinition/Device
+    - http://hl7.org/fhir/StructureDefinition/Organization
+  - :path: Provenance.agent.who
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Practitioner
+    - http://hl7.org/fhir/StructureDefinition/PractitionerRole
+    - http://hl7.org/fhir/StructureDefinition/RelatedPerson
+    - http://hl7.org/fhir/StructureDefinition/Patient
+    - http://hl7.org/fhir/StructureDefinition/Device
+    - http://hl7.org/fhir/StructureDefinition/Organization
+  - :path: Provenance.agent.onBehalfOf
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Practitioner
+    - http://hl7.org/fhir/StructureDefinition/PractitionerRole
+    - http://hl7.org/fhir/StructureDefinition/RelatedPerson
+    - http://hl7.org/fhir/StructureDefinition/Patient
+    - http://hl7.org/fhir/StructureDefinition/Device
+    - http://hl7.org/fhir/StructureDefinition/Organization
+  - :path: Provenance.entity.what
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Resource
+  :delayed_references:
+  - :path: agent.who
+    :resources:
+    - Practitioner
+    - Organization
+  - :path: agent.onBehalfOf
+    :resources:
+    - Organization

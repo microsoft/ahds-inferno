@@ -1,0 +1,36 @@
+{
+  "title": "Jeff Fattic - Microsoft Cloud 4 Health",
+  "id": null,
+  "test_suite_id": "us_core_v400",
+  "inputs": [
+    {
+      "name": "url",
+      "type": "text",
+      "title": "FHIR Endpoint",
+      "description": "URL of the FHIR endpoint",
+      "value": "https://fhirjfmc4h.azurehealthcareapis.com"
+    },
+    {
+      "name": "smart_credentials",
+      "type": "oauth_credentials",
+      "title": "OAuth Credentials",
+      "optional": true,
+      "value": "{\"access_token\":\"SAMPLE_TOKEN\"}"
+    },
+    {
+      "name": "patient_ids",
+      "type": "text",
+      "title": "Patient IDs",
+      "description": "Comma separated list of patient IDs that in sum contain all MUST SUPPORT elements",
+      "value": "49e4c78d-aa48-5c86-d762-ef26a1c04193, 7c7f0a38-8ab3-acb7-43ff-af50cd36c277"
+    },
+    {
+      "name": "implantable_device_codes",
+      "type": "text",
+      "title": "Implantable Device Type Code",
+      "description": "Enter the code for an Implantable Device type, or multiple codes separated by commas. If blank, Inferno will validate all Device resources against the Implantable Device profile",
+      "optional": true,
+      "value": null
+    }
+  ]
+}
