@@ -14,6 +14,7 @@ module USCoreTestKit
                     oauth_credentials :smart_credentials
                 end
                 
+                test from: :hls_patient_name_validate_test
                 test from: :hls_patient_name_search_test
 
                 test do
