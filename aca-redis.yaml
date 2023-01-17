@@ -1,0 +1,58 @@
+id: /subscriptions/1c642d88-5042-4d19-9d49-49be6612a40f/resourceGroups/rg-inferno-fhir-testing/providers/Microsoft.App/containerapps/redis
+identity:
+  type: None
+location: East US
+name: redis
+properties:
+  configuration:
+    activeRevisionsMode: Single
+    dapr: null
+    ingress: null
+    maxInactiveRevisions: null
+    registries:
+    - identity: ''
+      passwordSecretRef: acrinfernofhir
+      server: acrinfernofhir.azurecr.io
+      username: acrinfernofhir
+    secrets:
+    - name: acrinfernofhir
+  customDomainVerificationId: AEF3C4B669603942CD1CAC3C79F8285B957C1F84F3894639487025B89E721078
+  environmentId: /subscriptions/1c642d88-5042-4d19-9d49-49be6612a40f/resourceGroups/rg-inferno-fhir-testing/providers/Microsoft.App/managedEnvironments/aca-env-inferno-fhir
+  eventStreamEndpoint: https://eastus.azurecontainerapps.dev/subscriptions/1c642d88-5042-4d19-9d49-49be6612a40f/resourceGroups/rg-inferno-fhir-testing/containerApps/redis/eventstream
+  latestRevisionFqdn: ''
+  latestRevisionName: redis--1yo0eio
+  managedEnvironmentId: /subscriptions/1c642d88-5042-4d19-9d49-49be6612a40f/resourceGroups/rg-inferno-fhir-testing/providers/Microsoft.App/managedEnvironments/aca-env-inferno-fhir
+  outboundIpAddresses:
+  - 20.242.254.72
+  provisioningState: Succeeded
+  template:
+    containers:
+    - image: mcr.microsoft.com/azuredocs/containerapps-helloworld:latest
+      name: redis
+      volumeMounts:
+      - volumeName: sainfernofhirtesting-volume
+        mountPath: /opt/inferno/data
+      resources:
+        cpu: 0.5
+        ephemeralStorage: 1Gi
+        memory: 1Gi
+    initContainers: null
+    revisionSuffix: ''
+    scale:
+      maxReplicas: 10
+      minReplicas: 1
+      rules: null
+    volumes: 
+    - name: sainfernofhirtesting-volume
+      storageName: sainfernofhirtesting-mount 
+      storageType: AzureFile
+  workloadProfileType: null
+resourceGroup: rg-inferno-fhir-testing
+systemData:
+  createdAt: '2023-01-11T20:53:16.3576157'
+  createdBy: chad.voelker@microsoft.com
+  createdByType: User
+  lastModifiedAt: '2023-01-11T21:04:08.1911474'
+  lastModifiedBy: chad.voelker@microsoft.com
+  lastModifiedByType: User
+type: Microsoft.App/containerApps

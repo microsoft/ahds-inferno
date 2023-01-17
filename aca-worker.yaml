@@ -1,0 +1,61 @@
+id: /subscriptions/1c642d88-5042-4d19-9d49-49be6612a40f/resourceGroups/rg-inferno-fhir-testing/providers/Microsoft.App/containerapps/worker
+identity:
+  type: None
+location: East US
+name: worker
+properties:
+  configuration:
+    activeRevisionsMode: Single
+    dapr: null
+    ingress: null
+    maxInactiveRevisions: null
+    registries:
+    - identity: ''
+      passwordSecretRef: acrinfernofhirazurecrio-acrinfernofhir
+      server: acrinfernofhir.azurecr.io
+      username: acrinfernofhir
+    secrets:
+    - name: acrinfernofhirazurecrio-acrinfernofhir
+  customDomainVerificationId: AEF3C4B669603942CD1CAC3C79F8285B957C1F84F3894639487025B89E721078
+  environmentId: /subscriptions/1c642d88-5042-4d19-9d49-49be6612a40f/resourceGroups/rg-inferno-fhir-testing/providers/Microsoft.App/managedEnvironments/aca-env-inferno-fhir
+  eventStreamEndpoint: https://eastus.azurecontainerapps.dev/subscriptions/1c642d88-5042-4d19-9d49-49be6612a40f/resourceGroups/rg-inferno-fhir-testing/containerApps/worker/eventstream
+  latestRevisionFqdn: ''
+  latestRevisionName: worker--0boydca
+  managedEnvironmentId: /subscriptions/1c642d88-5042-4d19-9d49-49be6612a40f/resourceGroups/rg-inferno-fhir-testing/providers/Microsoft.App/managedEnvironments/aca-env-inferno-fhir
+  outboundIpAddresses:
+  - 20.242.254.72
+  provisioningState: Succeeded
+  template:
+    containers:
+    - command:
+#      - bundle exec -sidekiq -r /opt/inferno/worker.rb
+      - /usr/local/bundle/bin/puma
+      image: acrinfernofhir.azurecr.io/worker:latest
+      name: worker
+      volumeMounts:
+      - volumeName: sainfernofhirtesting-volume
+        mountPath: /opt/inferno/data
+      resources:
+        cpu: 0.5
+        ephemeralStorage: 1Gi
+        memory: 1Gi
+    initContainers: null
+    revisionSuffix: ''
+    scale:
+      maxReplicas: 10
+      minReplicas: 1
+      rules: null
+    volumes: 
+    - name: sainfernofhirtesting-volume
+      storageName: sainfernofhirtesting-mount 
+      storageType: AzureFile
+  workloadProfileType: null
+resourceGroup: rg-inferno-fhir-testing
+systemData:
+  createdAt: '2023-01-11T20:55:57.3574585'
+  createdBy: chad.voelker@microsoft.com
+  createdByType: User
+  lastModifiedAt: '2023-01-11T21:06:23.0384944'
+  lastModifiedBy: chad.voelker@microsoft.com
+  lastModifiedByType: User
+type: Microsoft.App/containerApps

@@ -82,12 +82,18 @@ module USCoreTestKit
       # TODO: skip if not supported?
       skip_if !any_valid_search_params?(all_search_params), unable_to_resolve_params_message
 
+      puts "***Log(SearchTest) all_search_params:'#{all_search_params}'"
+
+      run_search_test
+
       resources_returned =
         all_search_params.flat_map do |patient_id, params_list|
           params_list.flat_map { |params| perform_search(params, patient_id) }
         end
 
-      skip_if resources_returned.empty?, no_resources_skip_message
+        puts "***Log(SearchTest) after: params: '#{params}' all_search_params '#{all_search_params}' params_list '#{params_list}'"
+
+        skip_if resources_returned.empty?, no_resources_skip_message
 
       perform_multiple_or_search_test if multiple_or_search_params.present?
     end
