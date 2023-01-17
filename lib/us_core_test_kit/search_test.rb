@@ -84,14 +84,12 @@ module USCoreTestKit
 
       puts "***Log(SearchTest) all_search_params:'#{all_search_params}'"
 
-      run_search_test
-
       resources_returned =
         all_search_params.flat_map do |patient_id, params_list|
           params_list.flat_map { |params| perform_search(params, patient_id) }
         end
 
-        puts "***Log(SearchTest) after: params: '#{params}' all_search_params '#{all_search_params}' params_list '#{params_list}'"
+        puts "***Log(SearchTest) after: all_search_params '#{all_search_params}'"
 
         skip_if resources_returned.empty?, no_resources_skip_message
 

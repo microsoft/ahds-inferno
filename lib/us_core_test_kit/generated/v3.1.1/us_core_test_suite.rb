@@ -68,7 +68,7 @@ module USCoreTestKit
       end
 
       validator do
-        url ENV.fetch('V311_VALIDATOR_URL', 'http://validator_service:4567')
+        url ENV.fetch('V311_VALIDATOR_URL', 'http://validator-service:4567')
         exclude_message do |message|
           VALIDATION_MESSAGE_FILTERS.any? { |filter| filter.match? message.message }
         end
